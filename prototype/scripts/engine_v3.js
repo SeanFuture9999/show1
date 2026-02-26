@@ -658,8 +658,10 @@ function closeChapterEnd() {
     S.chapter = 'chapter1';
     script = CHAPTER1;
     branches = typeof CH1_BRANCHES !== 'undefined' ? CH1_BRANCHES : {};
-    S.step = 0;
+    S.idx = 0;
     run();
+  } else if (S.chapter === 'chapter1') {
+    showMsg('', '━━ 第二章：秘書的眼淚 ━━\n\n開發中...');
   } else {
     showMsg('', '━━ 開發中 ━━');
   }
@@ -785,5 +787,53 @@ function debugJump(target) {
   }
   
   console.log('Debug jump to:', target, 'idx:', S.idx);
+  run();
+}
+
+function debugJumpCh1(target) {
+  // Close menu
+  const m = document.getElementById('debug-menu');
+  if (m) m.classList.remove('open');
+  
+  // Initialize if needed
+  initEl();
+  
+  // Hide title screen
+  const title = document.getElementById('title');
+  if (title) { title.style.display = 'none'; title.style.opacity = 0; }
+  
+  // Reset all state
+  S.typing = false; S.waitClick = false; S.waitCard = false;
+  clearTimeout(typeTimer);
+  
+  // Hide all overlays
+  if (el.cardacquireoverlay) el.cardacquireoverlay.style.display = 'none';
+  if (el.dialogue) el.dialogue.style.cssText = '';
+  if (el.dialogue) el.dialogue.className = '';
+  const bt = document.getElementById('big-title');
+  if (bt) bt.style.display = 'none';
+  
+  // Reset CG layers
+  if (el.cgfront) { el.cgfront.style.opacity = 0; el.cgfront.style.transform = 'none'; }
+  if (el.cgback) { el.cgback.style.opacity = 0; }
+  
+  // Hide hand bar
+  if (el.handbar) el.handbar.style.display = 'none';
+  
+  // Set Chapter 1 script
+  script = CHAPTER1;
+  branches = typeof CH1_BRANCHES !== 'undefined' ? CH1_BRANCHES : {};
+  S.chapter = 'chapter1';
+  
+  // Give player the 3 starting cards from prologue
+  if (!S.hand || S.hand.length === 0) {
+    S.hand = ['fool', 'gluttony', 'judgement'];
+  }
+  
+  // Find label index
+  const idx = script.findIndex(c => c.label === target);
+  S.idx = idx >= 0 ? idx : 0;
+  
+  console.log('Debug jump Ch1 to:', target, 'idx:', S.idx);
   run();
 }
