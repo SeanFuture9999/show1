@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>重生抽卡復仇記 — 이번 생에서는</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Sans+KR:wght@400;700&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; background:#000; }
+body { font-family:'Noto Sans TC','Noto Sans KR',sans-serif; -webkit-tap-highlight-color:transparent; }
+
+/* ===== GAME CONTAINER ===== */
+#game {
+  position:relative; width:100%; height:100%;
+  max-width:900px; margin:0 auto;
+  background:#000; overflow:hidden;
+}
+
+/* ===== CG LAYERS ===== */
+.cg-layer {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background-size:cover; background-position:center;
+  background-repeat:no-repeat;
+  transition: opacity 0.6s ease; z-index:1;
+}
+#cg-back { opacity:0; }
+#cg-front { opacity:1; }
+.cg-layer.portrait { background-size:contain; background-color:#000; }
+
+/* ===== VIGNETTE ===== */
+#vignette {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+  z-index:2; pointer-events:none;
+}
+
+/* ===== DIALOGUE BOX ===== */
+#dialogue {
+  position:absolute; bottom:0; left:0; width:100%;
+  min-height:28%; max-height:40%;
+  background: linear-gradient(0deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.4) 85%, transparent 100%);
+  padding: 40px 28px 24px; z-index:20;
+  display:none; opacity:0; transition: opacity 0.4s ease;
+}
+#dialogue.show { display:block; opacity:1; }
+#speaker { color:#c9a94e; font-size:20px; font-weight:700; margin-bottom:8px; letter-spacing:2px; text-shadow: 0 0 12px rgba(201,169,78,0.4); }
+#text { color:#f0f0f0; font-size:22px; line-height:1.75; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+#text .highlight { color:#ff6b6b; font-weight:bold; text-shadow: 0 0 10px rgba(255,107,107,0.4); }
+#text .korean { color:#c9a94e; font-style:italic; }
+#text .system { color:#4ecdc4; text-shadow: 0 0 8px rgba(78,205,196,0.3); }
+#dialogue.narration #speaker { display:none; }
+#dialogue.narration #text { color:#ffffff; font-size:22px; letter-spacing:0.3px; }
+#click-hint { position:absolute; bottom:10px; right:20px; color:rgba(201,169,78,0.8); font-size:16px; animation: pulse 1.2s ease infinite; letter-spacing:1px; text-shadow: 0 0 6px rgba(201,169,78,0.4); }
+
+/* Debug menu - remove before launch */
+#debug-btn { position:fixed; top:8px; left:8px; z-index:999; width:36px; height:36px; border-radius:50%; background:rgba(0,0,0,0.6); border:1px solid #555; color:#aaa; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+#debug-btn:hover { background:rgba(201,169,78,0.3); color:#c9a94e; }
+#debug-menu { position:fixed; top:50px; left:8px; z-index:999; background:rgba(0,0,0,0.95); border:1px solid #c9a94e; border-radius:8px; padding:8px 0; display:none; min-width:180px; }
+#debug-menu.open { display:block; }
+.debug-item { display:block; width:100%; padding:10px 16px; background:none; border:none; color:#e0e0e0; font-size:14px; text-align:left; cursor:pointer; font-family:inherit; }
+.debug-item:hover { background:rgba(201,169,78,0.2); color:#c9a94e; }
+.debug-sep { height:1px; background:#333; margin:4px 0; }
+
+/* ===== CHOICES ===== */
+#choices {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  display:none; flex-direction:column; gap:14px;
+  width:85%; max-width:500px; z-index:30;
+}
+.choice-btn {
+  background:rgba(0,0,0,0.85); border:1.5px solid #c9a94e;
+  color:#e8e8e8; padding:16px 24px; font-size:17px; font-family:inherit;
+  cursor:pointer; text-align:center; border-radius:8px; transition:all 0.3s;
+  backdrop-filter:blur(8px);
+}
+.choice-btn:hover { background:rgba(201,169,78,0.2); transform:scale(1.02); }
+
+/* ===== ARROGANCE METER ===== */
+#arrogance { position:absolute; top:16px; right:16px; display:none; z-index:25; text-align:right; }
+#arrogance-label { color:#ff6b6b; font-size:16px; font-weight:bold; letter-spacing:2px; margin-bottom:6px; text-shadow:0 0 8px rgba(255,107,107,0.4); }
+#arrogance-track { width:220px; height:10px; background:rgba(255,255,255,0.15); border-radius:5px; overflow:hidden; border:1px solid rgba(255,107,107,0.3); }
+#arrogance-fill { height:100%; width:0%; background:linear-gradient(90deg,#ff6b6b,#ff2222); transition:width 0.6s ease; border-radius:5px; box-shadow:0 0 6px rgba(255,34,34,0.5); }
+
+/* ===== HAND BAR (NEW) ===== */
+#hand-bar {
+  position:absolute; bottom:0; left:0; width:100%;
+  display:none; z-index:15;
+  padding:8px 16px;
+  background:linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+  pointer-events:none;
+}
+#hand-cards {
+  display:flex; gap:8px; justify-content:center;
+  pointer-events:none;
+}
+.hand-card {
+  display:flex; flex-direction:column; align-items:center;
+  padding:4px 6px; border-radius:4px;
+  background:rgba(0,0,0,0.6); border:1px solid #555;
+  min-width:44px;
+}
+.hand-card-icon { font-size:20px; }
+.hand-card-img { width:36px; height:54px; object-fit:contain; border-radius:2px; image-rendering:pixelated; }
+.hand-card-name { font-size:9px; color:#aaa; margin-top:2px; }
+
+/* ===== CARD PREVIEW (Selection UI) ===== */
+#card-preview {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  display:none; z-index:50;
+  background:rgba(0,0,0,0.92);
+  flex-direction:column; align-items:center; justify-content:center;
+  padding:20px;
+}
+#card-preview-inner { width:100%; max-width:500px; display:flex; flex-direction:column; align-items:center; }
+
+.play-header { text-align:center; margin-bottom:24px; }
+.play-watch-prompt { color:#4ecdc4; font-size:16px; line-height:1.6; }
+
+.play-cards {
+  display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+  margin-bottom:24px;
+}
+.play-card {
+  width:100px; border-radius:8px; cursor:pointer; overflow:hidden;
+  background:rgba(20,20,20,0.9); border:2px solid #555;
+  display:flex; flex-direction:column; align-items:center;
+  transition:all 0.3s; padding:5px 5px 8px;
+}
+.play-card:hover { transform:translateY(-4px); box-shadow:0 4px 20px rgba(201,169,78,0.3); }
+.play-card.selected { transform:translateY(-8px) scale(1.05); box-shadow:0 0 30px rgba(201,169,78,0.6); border-color:#c9a94e; }
+.play-card-icon { font-size:32px; margin:12px 0; }
+.play-card-art { width:88px; height:132px; object-fit:contain; border-radius:4px; image-rendering:pixelated; }
+.play-card-name { font-size:13px; color:#e0e0e0; font-weight:bold; margin-top:5px; }
+.play-card-subtitle { font-size:10px; color:#888; }
+
+.play-hint-area { min-height:120px; text-align:center; width:100%; }
+.play-hint-text { color:#666; font-size:15px; animation:pulse 1.5s ease infinite; }
+.play-hint-watch { color:#4ecdc4; font-size:15px; line-height:1.8; margin-bottom:16px; padding:0 10px; }
+.play-hint-buttons { display:flex; gap:16px; justify-content:center; }
+
+.play-btn-confirm {
+  padding:12px 36px; background:transparent; border:1.5px solid #c9a94e;
+  color:#c9a94e; font-size:16px; font-family:inherit; cursor:pointer;
+  border-radius:6px; transition:all 0.3s; letter-spacing:2px;
+}
+.play-btn-confirm:hover { background:rgba(201,169,78,0.2); }
+.play-btn-cancel {
+  padding:12px 24px; background:transparent; border:1px solid #555;
+  color:#888; font-size:14px; font-family:inherit; cursor:pointer;
+  border-radius:6px; transition:all 0.3s;
+}
+.play-btn-cancel:hover { border-color:#888; color:#ccc; }
+
+/* ===== CARD ACQUIRE OVERLAY ===== */
+#card-acquire-overlay {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  display:none; z-index:55;
+  background:rgba(0,0,0,0.95);
+  flex-direction:column; align-items:center; justify-content:center;
+  padding:16px 12px;
+  overflow-y:auto;
+  gap:8px;
+}
+.acquire-glow {
+  position:absolute; width:300px; height:300px; border-radius:50%;
+  animation:burstExpand 2s ease forwards;
+}
+.acquire-card {
+  width:240px; border-radius:10px;
+  background:rgba(20,20,20,0.9); border:2px solid #c9a94e;
+  display:flex; flex-direction:column; align-items:center;
+  padding:14px 14px 18px; z-index:2; gap:6px;
+  animation:cardReveal 0.8s ease forwards;
+}
+.acquire-card-icon { font-size:48px; margin:10px 0; }
+.acquire-card-art { width:200px; height:300px; object-fit:contain; border-radius:6px; image-rendering:pixelated; }
+.acquire-card-rarity { font-size:14px; letter-spacing:4px; font-weight:bold; }
+.acquire-card-name { font-size:22px; color:#fff; font-weight:bold; }
+.acquire-card-subtitle { font-size:13px; color:#888; }
+.acquire-card-desc { font-size:13px; color:#aaa; text-align:center; line-height:1.6; margin-top:4px; }
+/* Shrink inside reveal cards */
+.reveal-card .acquire-card-rarity { font-size:11px; letter-spacing:2px; }
+.reveal-card .acquire-card-name { font-size:16px; }
+.reveal-card .acquire-card-subtitle { font-size:10px; }
+.acquire-watch-line { color:#4ecdc4; font-size:14px; text-align:center; line-height:1.8; margin-top:16px; z-index:2; max-width:85%; }
+.acquire-close {
+  margin-top:12px; margin-bottom:16px; padding:12px 44px; background:transparent;
+  border:1.5px solid #c9a94e; color:#c9a94e; cursor:pointer;
+  font-family:inherit; font-size:16px; border-radius:6px;
+  transition:all 0.3s; z-index:2; letter-spacing:2px; flex-shrink:0;
+}
+.acquire-close:hover { background:#c9a94e; color:#000; }
+
+/* Card reveal (prologue 3-card) */
+.reveal-title { color:#c9a94e; font-size:20px; font-weight:bold; letter-spacing:4px; margin-bottom:12px; z-index:2; animation:titleGlow 2s ease infinite; }
+.reveal-cards { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; z-index:2; }
+.reveal-card-wrapper { display:flex; flex-direction:column; align-items:center; gap:4px; animation:cardReveal 0.6s ease forwards; }
+.reveal-card {
+  width:100px; border-radius:6px; overflow:hidden;
+  background:rgba(20,20,20,0.9); border:2px solid #c9a94e;
+  display:flex; align-items:center; justify-content:center;
+  padding:4px;
+}
+.reveal-card-inner { text-align:center; display:flex; flex-direction:column; align-items:center; gap:2px; }
+.reveal-card-front { display:flex; flex-direction:column; align-items:center; gap:2px; }
+.reveal-card-art { width:85px; height:128px; object-fit:contain; border-radius:3px; image-rendering:pixelated; }
+.reveal-card-desc { font-size:10px; color:#aaa; max-width:100px; text-align:center; line-height:1.3; }
+
+/* Chapter end */
+.chapter-end-title { color:#c9a94e; font-size:28px; font-weight:bold; letter-spacing:6px; margin-bottom:16px; }
+.chapter-end-next { color:#ff6b6b; font-size:18px; margin-bottom:30px; letter-spacing:3px; }
+
+/* Big Title */
+#big-title {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  display:none; z-index:40; background:rgba(0,0,0,0.85);
+  flex-direction:column; align-items:center; justify-content:center;
+}
+#big-title .title-text { color:#c9a94e; font-size:48px; font-weight:900; letter-spacing:8px; text-shadow:0 0 30px rgba(201,169,78,0.6); animation:titleGlow 2s ease infinite; }
+#big-title .title-sub { color:#ff6b6b; font-size:26px; margin-top:16px; letter-spacing:4px; }
+
+/* ===== TITLE SCREEN ===== */
+#title {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  z-index:200; transition:opacity 1s ease;
+  background-size:cover; background-position:center;
+  background-image:url('assets/cg/cg_logo_v2.jpg');
+}
+#title::after { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.5) 100%); }
+#title h1 { color:#c9a94e; font-size:34px; letter-spacing:6px; font-weight:900; z-index:1; text-shadow:0 0 30px rgba(201,169,78,0.5); animation:titleGlow 3s ease infinite; }
+#title h2 { color:#ff6b6b; font-size:20px; margin:8px 0 6px; font-weight:normal; letter-spacing:3px; z-index:1; }
+#title .sub { color:#999; font-size:15px; margin-bottom:50px; letter-spacing:2px; z-index:1; }
+#start-btn { padding:16px 60px; background:transparent; border:1.5px solid #c9a94e; color:#c9a94e; font-size:20px; cursor:pointer; font-family:inherit; letter-spacing:6px; border-radius:6px; transition:all 0.3s; z-index:1; }
+#start-btn:hover { background:rgba(201,169,78,0.15); box-shadow:0 0 30px rgba(201,169,78,0.3); }
+
+/* ===== EFFECTS ===== */
+#flash { position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; z-index:100; pointer-events:none; transition:opacity 0.15s; }
+#shaker { position:relative; width:100%; height:100%; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+@keyframes titleGlow { 0%,100%{text-shadow:0 0 20px rgba(201,169,78,0.3)} 50%{text-shadow:0 0 40px rgba(201,169,78,0.7),0 0 60px rgba(201,169,78,0.3)} }
+@keyframes burstExpand { 0%{transform:scale(0);opacity:1} 100%{transform:scale(3);opacity:0} }
+@keyframes cardReveal { 0%{transform:scale(0.5) rotateY(180deg);opacity:0} 60%{transform:scale(1.1) rotateY(0);opacity:1} 100%{transform:scale(1) rotateY(0);opacity:1} }
+@keyframes shakeX { 0%,100%{transform:translateX(0)} 10%{transform:translateX(-8px)} 20%{transform:translateX(8px)} 30%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 50%{transform:translateX(-5px)} 60%{transform:translateX(5px)} 70%{transform:translateX(-3px)} 80%{transform:translateX(3px)} 90%{transform:translateX(-2px)} }
+.shake { animation:shakeX 0.8s ease; }
+@keyframes textImpact { 
+  0%{transform:translate(0,0) scale(1)} 
+  5%{transform:translate(-6px,3px) scale(1.02)} 
+  10%{transform:translate(8px,-2px) scale(1.03)} 
+  15%{transform:translate(-5px,4px) scale(1.01)} 
+  20%{transform:translate(6px,-3px) scale(1.02)} 
+  30%{transform:translate(-4px,2px) scale(1.01)} 
+  40%{transform:translate(3px,-1px) scale(1)} 
+  55%{transform:translate(-2px,1px)} 
+  70%{transform:translate(1px,0px)} 
+  100%{transform:translate(0,0) scale(1)} 
+}
+#dialogue.text-impact #text { animation:textImpact 1.2s ease-out; }
+
+/* Scanline */
+#game::after { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.02) 3px,rgba(0,0,0,0.02) 6px); pointer-events:none; z-index:150; }
+
+/* Mobile */
+@media (max-width:600px) {
+  #text { font-size:19px; line-height:1.7; }
+  #speaker { font-size:17px; }
+  #dialogue { padding:32px 20px 18px; min-height:30%; }
+  #title h1 { font-size:28px; }
+  .play-card { width:90px; padding:4px 4px 6px; }
+  .play-card-icon { font-size:26px; }
+  .play-card-art { width:78px; height:117px; }
+  .play-card-name { font-size:12px; }
+  .play-card-subtitle { font-size:9px; }
+  .play-hint-watch { font-size:14px; }
+  .acquire-card { width:220px; padding:12px 12px 16px; }
+  .acquire-card-art { width:180px; height:270px; }
+  .reveal-card { width:110px; }
+  .reveal-card-art { width:94px; height:141px; }
+}
+</style>
+</head>
+<body>
+<!-- Debug menu - remove before launch -->
+<button id="debug-btn" onclick="toggleDebug()">⚙</button>
+<div id="debug-menu">
+  <button class="debug-item" onclick="debugJump(0)">▶ 序章：拖行天台</button>
+  <button class="debug-item" onclick="debugJump('lookingup')">▶ 仰角（俊宇）</button>
+  <button class="debug-item" onclick="debugJump('hand')">▶ 踩手指</button>
+  <button class="debug-item" onclick="debugJump('push')">▶ 推落</button>
+  <button class="debug-item" onclick="debugJump('falling')">▶ 墜落</button>
+  <div class="debug-sep"></div>
+  <button class="debug-item" onclick="debugJump('childhood')">▶ 走馬燈：童年</button>
+  <button class="debug-item" onclick="debugJump('university')">▶ 走馬燈：大學</button>
+  <button class="debug-item" onclick="debugJump('proposal')">▶ 走馬燈：求婚</button>
+  <div class="debug-sep"></div>
+  <button class="debug-item" onclick="debugJump('eyesopen')">▶ 覺醒：睜眼</button>
+  <button class="debug-item" onclick="debugJump('watch')">▶ 覺醒：懷錶</button>
+  <button class="debug-item" onclick="debugJump('kimbap')">▶ 紫菜包飯</button>
+  <button class="debug-item" onclick="debugJump('cards')">▶ 命運之牌</button>
+  <div class="debug-sep"></div>
+  <button class="debug-item" onclick="debugJump('chapter1')">▶ 第一章預告</button>
+</div>
+
+<div id="game">
+  <!-- Title -->
+  <div id="title">
+    <h1>重生抽卡復仇記</h1>
+    <h2>이번 생에서는</h2>
+    <div class="sub">— 這一世，輪到你跪了 —</div>
+    <button id="start-btn" onclick="startGame()">START</button>
+  </div>
+
+  <div id="shaker">
+    <div id="cg-back" class="cg-layer"></div>
+    <div id="cg-front" class="cg-layer"></div>
+    <div id="vignette"></div>
+  </div>
+
+  <!-- Arrogance -->
+  <div id="arrogance">
+    <div id="arrogance-label">囂張值</div>
+    <div id="arrogance-track"><div id="arrogance-fill"></div></div>
+  </div>
+
+  <!-- Hand Bar -->
+  <div id="hand-bar">
+    <div id="hand-cards"></div>
+  </div>
+
+  <!-- Dialogue -->
+  <div id="dialogue">
+    <div id="speaker"></div>
+    <div id="text"></div>
+    <div id="click-hint">▼</div>
+  </div>
+
+  <!-- Choices -->
+  <div id="choices"></div>
+
+  <!-- Card Play Selection -->
+  <div id="card-preview">
+    <div id="card-preview-inner"></div>
+  </div>
+
+  <!-- Card Acquire / Reveal Overlay -->
+  <div id="card-acquire-overlay"></div>
+
+  <!-- Big Title -->
+  <div id="big-title"></div>
+
+  <!-- Effects -->
+  <div id="flash"></div>
+</div>
+
+<script src="data/prologue_v3.js"></script>
+<script src="data/chapter1.js"></script>
+<script src="scripts/engine_v3.js"></script>
+</body>
+</html>

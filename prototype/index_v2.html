@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>重生抽卡復仇記 — 이번 생에서는</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Sans+KR:wght@400;700&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; background:#000; }
+body { font-family:'Noto Sans TC','Noto Sans KR',sans-serif; -webkit-tap-highlight-color:transparent; }
+
+/* ===== GAME CONTAINER ===== */
+#game {
+  position:relative; width:100%; height:100%;
+  max-width:900px; margin:0 auto;
+  background:#000; overflow:hidden;
+}
+
+/* ===== CG LAYERS (fullscreen images) ===== */
+.cg-layer {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background-size:cover; background-position:center;
+  background-repeat:no-repeat;
+  transition: opacity 0.6s ease;
+  z-index:1;
+}
+#cg-back { opacity:0; }
+#cg-front { opacity:1; }
+
+/* Portrait images: contain instead of cover */
+.cg-layer.portrait {
+  background-size:contain;
+  background-color:#000;
+}
+
+/* ===== VIGNETTE ===== */
+#vignette {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+  z-index:2; pointer-events:none;
+}
+
+/* ===== DIALOGUE BOX ===== */
+#dialogue {
+  position:absolute; bottom:0; left:0; width:100%;
+  min-height:28%; max-height:40%;
+  background: linear-gradient(0deg, 
+    rgba(0,0,0,0.92) 0%, 
+    rgba(0,0,0,0.85) 60%, 
+    rgba(0,0,0,0.4) 85%,
+    transparent 100%);
+  padding: 40px 28px 24px;
+  z-index:20;
+  display:none;
+  opacity:0;
+  transition: opacity 0.4s ease;
+}
+#dialogue.show { display:block; opacity:1; }
+
+/* Speaker */
+#speaker {
+  color:#c9a94e;
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:8px;
+  letter-spacing:2px;
+  text-shadow: 0 0 12px rgba(201,169,78,0.4);
+}
+
+/* Text */
+#text {
+  color:#f0f0f0;
+  font-size:22px;
+  line-height:1.75;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+#text .highlight { color:#ff6b6b; font-weight:bold; text-shadow: 0 0 10px rgba(255,107,107,0.4); }
+#text .korean { color:#c9a94e; font-style:italic; }
+#text .system { color:#4ecdc4; text-shadow: 0 0 8px rgba(78,205,196,0.3); }
+
+/* Narration style */
+#dialogue.narration #speaker { display:none; }
+#dialogue.narration #text { color:#ffffff; font-size:22px; letter-spacing:0.3px; }
+
+/* Click indicator */
+#click-hint {
+  position:absolute; bottom:10px; right:20px;
+  color:rgba(201,169,78,0.6); font-size:13px;
+  animation: pulse 1.5s ease infinite;
+  letter-spacing:1px;
+}
+
+/* ===== CHOICES ===== */
+#choices {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  display:none; flex-direction:column; gap:14px;
+  width:85%; max-width:500px; z-index:30;
+}
+.choice-btn {
+  background:rgba(0,0,0,0.85);
+  border:1.5px solid #c9a94e;
+  color:#e8e8e8; padding:16px 24px;
+  font-size:17px; font-family:inherit;
+  cursor:pointer; text-align:center;
+  border-radius:8px; transition:all 0.3s;
+  backdrop-filter:blur(8px);
+}
+.choice-btn:hover { background:rgba(201,169,78,0.2); transform:scale(1.02); }
+.choice-btn.endure { border-color:#4ecdc4; }
+.choice-btn.endure:hover { background:rgba(78,205,196,0.2); }
+.choice-btn.strike { border-color:#555; opacity:0.35; cursor:not-allowed; text-decoration:line-through; }
+
+/* ===== ARROGANCE METER ===== */
+#arrogance {
+  position:absolute; top:16px; right:16px;
+  display:none; z-index:25;
+  text-align:right;
+}
+#arrogance-label {
+  color:#ff6b6b; font-size:16px; font-weight:bold; letter-spacing:2px;
+  margin-bottom:6px; transition:all 0.3s;
+  text-shadow:0 0 8px rgba(255,107,107,0.4);
+}
+#arrogance-track {
+  width:220px; height:10px; background:rgba(255,255,255,0.15);
+  border-radius:5px; overflow:hidden;
+  border:1px solid rgba(255,107,107,0.3);
+}
+#arrogance-fill {
+  height:100%; width:0%;
+  background:linear-gradient(90deg,#ff6b6b,#ff2222);
+  transition:width 0.6s ease;
+  border-radius:5px;
+  box-shadow:0 0 6px rgba(255,34,34,0.5);
+}
+
+/* ===== GACHA OVERLAY ===== */
+#gacha {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.97); display:none;
+  z-index:50; flex-direction:column;
+  align-items:center; justify-content:center;
+}
+
+/* Stage 1: Cards fly in */
+#g-stage1 { display:flex; flex-direction:column; align-items:center; justify-content:center; position:absolute; width:100%; height:100%; }
+#g-watch { font-size:72px; animation: watchPulse 1s ease infinite; filter:drop-shadow(0 0 20px rgba(201,169,78,0.6)); }
+#g-charge-text { color:#c9a94e; font-size:18px; margin-top:16px; letter-spacing:3px; }
+
+/* Stage 2: 10 cards spread */
+#g-stage2 { display:none; flex-direction:column; align-items:center; justify-content:center; position:absolute; width:100%; height:100%; padding:16px; }
+#g-spread { display:flex; flex-direction:column; align-items:center; gap:12px; width:100%; }
+.g-row { display:flex; gap:12px; justify-content:center; }
+.g-card { 
+  width:90px; height:135px; border-radius:6px; cursor:pointer;
+  background:url('assets/ui/card_back_v2.jpg') center/cover no-repeat;
+  transition:all 0.3s ease; position:relative;
+  box-shadow:0 2px 8px rgba(0,0,0,0.5);
+  opacity:0; transform:translateY(-60px) scale(0.5);
+  flex-shrink:0;
+}
+.g-card.dealt { opacity:1; transform:translateY(0) scale(1); }
+.g-card:hover { transform:translateY(-6px) scale(1.05); box-shadow:0 4px 20px rgba(201,169,78,0.5); }
+.g-card.chosen { 
+  transform:scale(1.15); box-shadow:0 0 30px rgba(201,169,78,0.8);
+  border:2px solid #c9a94e; z-index:10;
+}
+.g-card.dim { opacity:0.2; transform:scale(0.85); pointer-events:none; }
+#g-pick-text { color:#c9a94e; font-size:18px; margin-top:20px; letter-spacing:3px; animation:pulse 1.5s ease infinite; }
+
+/* Stage 3: Reveal */
+#g-stage3 { display:none; flex-direction:column; align-items:center; justify-content:center; position:absolute; width:100%; height:100%; }
+#g-burst { position:absolute; width:250px; height:250px; border-radius:50%; background:radial-gradient(circle,rgba(201,169,78,0.4) 0%,transparent 70%); animation:burstExpand 1.2s ease forwards; }
+#g-result-card { 
+  width:220px; height:330px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:14px; z-index:2;
+  background-size:cover; background-position:center;
+  box-shadow:0 0 40px rgba(201,169,78,0.4);
+  animation:cardReveal 0.8s ease forwards;
+}
+#g-result-card .card-icon { font-size:48px; }
+#g-rarity { font-size:18px; letter-spacing:4px; font-weight:bold; z-index:2; }
+#g-name { font-size:22px; color:#fff; font-weight:bold; margin:8px 0; text-shadow:0 0 10px rgba(255,255,255,0.2); z-index:2; }
+#g-desc { font-size:14px; color:#aaa; max-width:80%; text-align:center; line-height:1.7; z-index:2; }
+#g-close { margin-top:24px; padding:12px 44px; background:transparent; border:1.5px solid #c9a94e; color:#c9a94e; cursor:pointer; font-family:inherit; font-size:16px; border-radius:6px; transition:all 0.3s; z-index:2; letter-spacing:2px; }
+#g-close:hover { background:#c9a94e; color:#000; }
+
+/* Big Title Overlay */
+#big-title {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  display:none; z-index:40;
+  background:rgba(0,0,0,0.85);
+  flex-direction:column; align-items:center; justify-content:center;
+}
+#big-title .title-text {
+  color:#c9a94e; font-size:48px; font-weight:900;
+  letter-spacing:8px; text-shadow:0 0 30px rgba(201,169,78,0.6);
+  animation:titleGlow 2s ease infinite;
+}
+#big-title .title-sub {
+  color:#ff6b6b; font-size:26px; margin-top:16px;
+  letter-spacing:4px;
+}
+
+@keyframes cardDeal { 
+  0%{opacity:0;transform:translateY(-80px) scale(0.3) rotateZ(20deg)} 
+  100%{opacity:1;transform:translateY(0) scale(1) rotateZ(0deg)} 
+}
+
+/* ===== TITLE SCREEN ===== */
+#title {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  z-index:200; transition:opacity 1s ease;
+  background-size:cover; background-position:center;
+  background-image:url('assets/cg/cg_logo_v2.jpg');
+}
+#title::after {
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.5) 100%);
+}
+#title h1 {
+  color:#c9a94e; font-size:34px; letter-spacing:6px; font-weight:900; z-index:1;
+  text-shadow:0 0 30px rgba(201,169,78,0.5);
+  animation:titleGlow 3s ease infinite;
+}
+#title h2 {
+  color:#ff6b6b; font-size:20px; margin:8px 0 6px; font-weight:normal; letter-spacing:3px; z-index:1;
+}
+#title .sub {
+  color:#999; font-size:15px; margin-bottom:50px; letter-spacing:2px; z-index:1;
+}
+#start-btn {
+  padding:16px 60px; background:transparent; border:1.5px solid #c9a94e;
+  color:#c9a94e; font-size:20px; cursor:pointer; font-family:inherit;
+  letter-spacing:6px; border-radius:6px; transition:all 0.3s; z-index:1;
+}
+#start-btn:hover { background:rgba(201,169,78,0.15); box-shadow:0 0 30px rgba(201,169,78,0.3); }
+
+/* ===== SCREEN EFFECTS ===== */
+#flash {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  opacity:0; z-index:100; pointer-events:none;
+  transition:opacity 0.15s;
+}
+#shaker { position:relative; width:100%; height:100%; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+@keyframes titleGlow { 0%,100%{text-shadow:0 0 20px rgba(201,169,78,0.3)} 50%{text-shadow:0 0 40px rgba(201,169,78,0.7),0 0 60px rgba(201,169,78,0.3)} }
+@keyframes watchPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15); filter:drop-shadow(0 0 40px rgba(201,169,78,1))} }
+@keyframes cardFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes burstExpand { 0%{transform:scale(0);opacity:1} 100%{transform:scale(3);opacity:0} }
+@keyframes cardReveal { 0%{transform:scale(0.5) rotateY(180deg);opacity:0} 60%{transform:scale(1.15) rotateY(0);opacity:1} 100%{transform:scale(1) rotateY(0);opacity:1} }
+@keyframes shakeX { 0%,100%{transform:translateX(0)} 10%{transform:translateX(-8px)} 30%{transform:translateX(8px)} 50%{transform:translateX(-6px)} 70%{transform:translateX(6px)} 90%{transform:translateX(-3px)} }
+.shake { animation:shakeX 0.4s ease; }
+@keyframes cgIn { 0%{opacity:0;transform:scale(1.05)} 100%{opacity:1;transform:scale(1)} }
+@keyframes pulseRed { 0%,100%{box-shadow:none} 50%{box-shadow:0 0 20px rgba(255,0,0,0.6)} }
+
+/* Subtle scanline */
+#game::after {
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.02) 3px,rgba(0,0,0,0.02) 6px);
+  pointer-events:none; z-index:150;
+}
+
+/* Mobile adjustments */
+@media (max-width:600px) {
+  #text { font-size:19px; line-height:1.7; }
+  #speaker { font-size:17px; }
+  #dialogue { padding:32px 20px 18px; min-height:30%; }
+  #title h1 { font-size:28px; }
+}
+</style>
+</head>
+<body>
+<div id="game">
+  <!-- Title -->
+  <div id="title">
+    <h1>重生抽卡復仇記</h1>
+    <h2>이번 생에서는</h2>
+    <div class="sub">— 這一世，輪到你跪了 —</div>
+    <button id="start-btn" onclick="startGame()">START</button>
+  </div>
+
+  <div id="shaker">
+    <div id="cg-back" class="cg-layer"></div>
+    <div id="cg-front" class="cg-layer"></div>
+    <div id="vignette"></div>
+  </div>
+
+  <!-- Arrogance -->
+  <div id="arrogance">
+    <div id="arrogance-label">囂張值</div>
+    <div id="arrogance-track"><div id="arrogance-fill"></div></div>
+  </div>
+
+  <!-- Dialogue -->
+  <div id="dialogue">
+    <div id="speaker"></div>
+    <div id="text"></div>
+    <div id="click-hint">▼</div>
+  </div>
+
+  <!-- Choices -->
+  <div id="choices"></div>
+
+  <!-- Gacha -->
+  <div id="gacha">
+    <!-- Stage 1: Cards fly in -->
+    <div id="g-stage1">
+      <div id="g-watch">⏱️</div>
+      <div id="g-charge-text">命運之輪開始轉動...</div>
+    </div>
+    <!-- Stage 2: 10 cards spread face-down -->
+    <div id="g-stage2">
+      <div id="g-spread"></div>
+      <div id="g-pick-text">選擇你的命運</div>
+    </div>
+    <!-- Stage 3: Reveal -->
+    <div id="g-stage3">
+      <div id="g-burst"></div>
+      <div id="g-result-card"></div>
+      <div id="g-rarity"></div>
+      <div id="g-name"></div>
+      <div id="g-desc"></div>
+      <button id="g-close" onclick="closeGacha()">收下</button>
+    </div>
+  </div>
+
+  <!-- Big Title Overlay -->
+  <div id="big-title"></div>
+
+  <!-- Effects -->
+  <div id="flash"></div>
+</div>
+
+<script src="data/prologue_v2.js"></script>
+<script src="scripts/engine_v2.js"></script>
+</body>
+</html>

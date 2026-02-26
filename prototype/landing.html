@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>重生抽卡復仇記 — 命運之牌，由你翻開</title>
+<meta name="description" content="重生回到五年前，三張命運之牌在手。這次，輪到你跪了。韓風復仇 × 抽卡策略視覺小說。">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;700&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background:#0a0a0a; color:#e0e0e0;
+  font-family:'Noto Sans TC', sans-serif;
+  overflow-x:hidden;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position:relative; width:100%; height:100vh; min-height:600px;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
+  overflow:hidden;
+}
+.hero-bg {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background:url('assets/cg/cg_falling_v2.jpg') center 30% / cover no-repeat;
+  filter:brightness(0.5);
+  animation:heroZoom 20s ease-in-out infinite alternate;
+}
+@keyframes heroZoom { 0%{transform:scale(1)} 100%{transform:scale(1.08)} }
+.hero-overlay {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.7) 75%, rgba(10,10,10,1) 100%);
+}
+.hero-content {
+  position:relative; z-index:2; text-align:center; padding:0 24px 60px;
+}
+.hero-title {
+  font-family:'Noto Serif TC', serif;
+  font-size:clamp(32px, 8vw, 56px); font-weight:900;
+  color:#c9a94e; letter-spacing:6px;
+  text-shadow:0 0 40px rgba(201,169,78,0.4), 0 2px 8px rgba(0,0,0,0.8);
+  line-height:1.3; margin-bottom:16px;
+}
+.hero-subtitle {
+  font-size:clamp(14px, 3.5vw, 20px); color:#ff6b6b;
+  letter-spacing:3px; margin-bottom:8px; font-weight:700;
+}
+.hero-tagline {
+  font-size:clamp(13px, 3vw, 17px); color:rgba(255,255,255,0.7);
+  letter-spacing:2px; margin-bottom:32px; line-height:1.8;
+}
+.hero-tagline em {
+  color:#c9a94e; font-style:normal; font-weight:700;
+}
+.scroll-hint {
+  color:rgba(201,169,78,0.5); font-size:24px;
+  animation:bounce 2s ease infinite;
+}
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+/* ===== SECTIONS ===== */
+section { padding:80px 24px; max-width:720px; margin:0 auto; }
+.section-label {
+  font-size:12px; color:#c9a94e; letter-spacing:6px; text-transform:uppercase;
+  margin-bottom:8px; opacity:0.7;
+}
+.section-title {
+  font-family:'Noto Serif TC', serif;
+  font-size:clamp(24px, 6vw, 36px); font-weight:900;
+  color:#fff; letter-spacing:3px; margin-bottom:24px;
+  line-height:1.4;
+}
+.section-title span { color:#c9a94e; }
+.section-text {
+  font-size:clamp(15px, 3.5vw, 18px); color:#bbb;
+  line-height:2; margin-bottom:32px;
+}
+.section-text strong { color:#ff6b6b; font-weight:700; }
+.section-text em { color:#c9a94e; font-style:normal; }
+
+/* ===== SCENE CARDS ===== */
+.scene-card {
+  position:relative; width:100%; border-radius:12px; overflow:hidden;
+  margin-bottom:48px; border:1px solid rgba(201,169,78,0.2);
+}
+.scene-card img {
+  width:100%; height:auto; display:block;
+  filter:brightness(0.85) contrast(1.05);
+}
+.scene-card-overlay {
+  position:absolute; bottom:0; left:0; width:100%;
+  background:linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+  padding:40px 20px 20px;
+}
+.scene-card-quote {
+  font-family:'Noto Serif TC', serif;
+  font-size:clamp(16px, 4vw, 22px); color:#fff;
+  line-height:1.7; font-weight:700;
+}
+.scene-card-quote .kr {
+  color:#c9a94e; font-style:italic; font-size:0.9em;
+}
+.scene-card-caption {
+  font-size:13px; color:#888; margin-top:8px;
+}
+
+/* ===== CARD SYSTEM ===== */
+.cards-showcase {
+  display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+  margin:32px 0 40px;
+}
+.showcase-card {
+  width:120px; border-radius:8px; overflow:hidden;
+  background:rgba(20,20,20,0.9); border:2px solid #c9a94e;
+  padding:6px; text-align:center;
+  transition:transform 0.3s, box-shadow 0.3s;
+}
+.showcase-card:hover {
+  transform:translateY(-6px);
+  box-shadow:0 8px 30px rgba(201,169,78,0.3);
+}
+.showcase-card img {
+  width:100%; height:auto; border-radius:4px;
+  image-rendering:pixelated;
+}
+.showcase-card-name {
+  font-size:14px; color:#fff; font-weight:700; margin-top:6px;
+}
+.showcase-card-sub {
+  font-size:11px; color:#888; margin-top:2px;
+}
+.showcase-card-desc {
+  font-size:11px; color:#aaa; margin-top:6px; line-height:1.4;
+}
+
+/* ===== FEATURES ===== */
+.features {
+  display:grid; grid-template-columns:1fr 1fr; gap:20px;
+  margin:32px 0;
+}
+.feature-box {
+  background:rgba(201,169,78,0.05); border:1px solid rgba(201,169,78,0.15);
+  border-radius:10px; padding:20px; text-align:center;
+}
+.feature-icon { font-size:20px; margin-bottom:8px; color:#c9a94e; }
+.feature-title { font-size:15px; color:#c9a94e; font-weight:700; margin-bottom:6px; }
+.feature-desc { font-size:13px; color:#999; line-height:1.5; }
+
+/* ===== DIVIDER ===== */
+.divider {
+  text-align:center; padding:40px 0;
+  color:rgba(201,169,78,0.3); font-size:24px; letter-spacing:12px;
+}
+
+/* ===== CTA ===== */
+.cta-section {
+  text-align:center; padding:80px 24px 120px;
+}
+.cta-quote {
+  font-family:'Noto Serif TC', serif;
+  font-size:clamp(20px, 5vw, 32px); color:#fff;
+  font-weight:900; letter-spacing:3px; line-height:1.6;
+  margin-bottom:12px;
+}
+.cta-quote span { color:#c9a94e; }
+.cta-sub {
+  font-size:16px; color:#ff6b6b; letter-spacing:2px;
+  margin-bottom:40px;
+}
+.cta-btn {
+  display:inline-block; padding:18px 60px;
+  background:linear-gradient(135deg, #c9a94e 0%, #a8872e 100%);
+  color:#000; font-size:20px; font-weight:900;
+  font-family:'Noto Serif TC', serif;
+  letter-spacing:6px; border:none; border-radius:8px;
+  cursor:pointer; text-decoration:none;
+  transition:all 0.3s; box-shadow:0 4px 20px rgba(201,169,78,0.4);
+}
+.cta-btn:hover {
+  transform:translateY(-3px);
+  box-shadow:0 8px 40px rgba(201,169,78,0.6);
+}
+.cta-note {
+  font-size:13px; color:#666; margin-top:16px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align:center; padding:40px 24px;
+  border-top:1px solid rgba(201,169,78,0.1);
+  font-size:12px; color:#555;
+}
+footer a { color:#c9a94e; text-decoration:none; }
+
+/* ===== ANIMATIONS ===== */
+.fade-up {
+  opacity:0; transform:translateY(30px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:480px) {
+  section { padding:60px 20px; }
+  .features { grid-template-columns:1fr; }
+  .showcase-card { width:100px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-subtitle">韓風復仇 × 命運抽卡</div>
+    <h1 class="hero-title">重生抽卡<br>復仇記</h1>
+    <p class="hero-tagline">
+      被最信任的人推下天台。<br>
+      重生回到五年前，手腕上多了一只<em>命運懷錶</em>。<br>
+      三張牌。一次機會。<em>這次，輪到你跪了。</em>
+    </p>
+    <div class="scroll-hint">▼</div>
+  </div>
+</div>
+
+<!-- STORY HOOK -->
+<section>
+  <div class="fade-up">
+    <div class="section-label">Story</div>
+    <h2 class="section-title">他用五年換來的，<br>是從<span>33樓墜落</span>的結局</h2>
+    <p class="section-text">
+      姜旻赫，首爾頂尖企業「盛元集團」最年輕的副社長。<br>
+      白手起家、拼命爬升、把一切獻給公司和朋友。<br><br>
+      然後他被<strong>最好的朋友推下了天台</strong>。<br>
+      妻子在旁邊看著，一句話都沒說。
+    </p>
+  </div>
+</section>
+
+<!-- SCENE 1: DRAGGED -->
+<div class="scene-card fade-up" style="max-width:720px;margin:0 auto 0;">
+  <img src="assets/cg/cg_dragged_rooftop_v2.jpg" alt="拖行">
+  <div class="scene-card-overlay">
+    <div class="scene-card-quote">
+      「我等這一天——<strong>五年了</strong>。」
+    </div>
+    <div class="scene-card-caption">大學時代的摯友，親手將他拖上天台</div>
+  </div>
+</div>
+
+<!-- SCENE 2: PUSH -->
+<section>
+  <div class="fade-up">
+    <div class="scene-card">
+      <img src="assets/cg/cg_the_push_v2.jpg" alt="推落">
+      <div class="scene-card-overlay">
+        <div class="scene-card-quote">
+          <span class="kr">「형, 나는 뭔데？」</span><br>
+          可是哥，我算什麼？
+        </div>
+      </div>
+    </div>
+    <p class="section-text" style="text-align:center;">
+      墜落的瞬間，腦中最後的念頭不是「為什麼」。<br>
+      是——<em>「如果再來一次」</em>。
+    </p>
+  </div>
+</section>
+
+<div class="divider">◆ ◆ ◆</div>
+
+<!-- REBIRTH -->
+<section>
+  <div class="fade-up">
+    <div class="section-label">Rebirth</div>
+    <h2 class="section-title"><span>鬧鐘響了。</span><br>日期：2021年3月15日。</h2>
+    <p class="section-text">
+      他回來了。<br>
+      入職盛元集團的<strong>前一天</strong>。五年前。<br><br>
+      年輕的手，沒有傷疤，十根指頭完好無缺。<br>
+      但手腕上——多了一只<em>不走時間的金色懷錶</em>。
+    </p>
+  </div>
+  <div class="scene-card fade-up">
+    <img src="assets/cg/cg_watch_glow_v2.jpg" alt="懷錶">
+    <div class="scene-card-overlay">
+      <div class="scene-card-quote">
+        「你還有不甘心。<br>所以時間給了你<strong>第二次機會</strong>。」
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">◆ ◆ ◆</div>
+
+<!-- CARD SYSTEM -->
+<section>
+  <div class="fade-up">
+    <div class="section-label">Card System</div>
+    <h2 class="section-title"><span>命運之牌</span>，由你翻開</h2>
+    <p class="section-text">
+      懷錶給了他三張牌——每張都是一個<em>扭轉命運的機會</em>。<br>
+      但規則很殘酷：<strong>同一個瞬間，只能出一張</strong>。<br>
+      選錯了，機會就過了。選對了——
+    </p>
+  </div>
+
+  <div class="cards-showcase fade-up">
+    <div class="showcase-card" style="border-color:#4ecdc4;">
+      <img src="assets/ui/card_fool.png" alt="愚者">
+      <div class="showcase-card-name">愚者</div>
+      <div class="showcase-card-sub">The Fool</div>
+      <div class="showcase-card-desc">看起來什麼都不懂的人，往往看得最清楚。</div>
+    </div>
+    <div class="showcase-card" style="border-color:#ff6b6b;">
+      <img src="assets/ui/card_gluttony.png" alt="暴食">
+      <div class="showcase-card-name">暴食</div>
+      <div class="showcase-card-sub">Gluttony</div>
+      <div class="showcase-card-desc">貪得無厭的人，終將被自己的胃口噎死。</div>
+    </div>
+    <div class="showcase-card" style="border-color:#45b7d1;">
+      <img src="assets/ui/card_judgement.png" alt="審判">
+      <div class="showcase-card-name">審判</div>
+      <div class="showcase-card-sub">Judgement</div>
+      <div class="showcase-card-desc">所有的痕跡都會說話。你以為刪了？它記得。</div>
+    </div>
+  </div>
+
+  <p class="section-text fade-up" style="text-align:center;">
+    <em>「誰說只有三張？走下去，你會拿到更多。」</em><br>
+    ——如果你夠聰明的話。
+  </p>
+</section>
+
+<div class="divider">◆ ◆ ◆</div>
+
+<!-- FEATURES -->
+<section>
+  <div class="fade-up">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">不只是小說，<br>是你的<span>復仇棋局</span></h2>
+    <div class="features">
+      <div class="feature-box">
+        <div class="feature-icon">◆</div>
+        <div class="feature-title">策略出牌</div>
+        <div class="feature-desc">每張牌改變一個命運節點。出牌時機決定結局走向。</div>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">◆</div>
+        <div class="feature-title">沉浸劇情</div>
+        <div class="feature-desc">韓劇級敘事，全手繪 CG。每個選擇都有重量。</div>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">◆</div>
+        <div class="feature-title">囂張值系統</div>
+        <div class="feature-desc">反派越囂張，崩潰時越爽。忍耐是為了更大的反擊。</div>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">◆</div>
+        <div class="feature-title">多重結局</div>
+        <div class="feature-desc">不同的牌組合產生不同故事線。你的復仇，你決定。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KIMBAP SCENE -->
+<div class="scene-card fade-up" style="max-width:720px;margin:0 auto;">
+  <img src="assets/cg/cg_kimbap_cry_v2.jpg" alt="紫菜包飯">
+  <div class="scene-card-overlay">
+    <div class="scene-card-quote">
+      「不好吃嗎？」<br>
+      「不是。<strong>太好吃了</strong>才這樣。」
+    </div>
+    <div class="scene-card-caption">重生後的第一餐——他連死之前最後一頓都沒吃到。</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="fade-up">
+    <p class="cta-quote">
+      <span>이번 생에서는——</span><br>
+      這一世——<br>
+      <span>무릎 꿇는 건 네 차례다.</span>
+    </p>
+    <p class="cta-sub">輪到你跪了。</p>
+    <a href="index_v3.html" class="cta-btn">立 即 遊 玩</a>
+    <p class="cta-note">免費體驗序章完整內容｜手機 / 電腦皆可</p>
+  </div>
+</div>
+
+<footer>
+  <p>重生抽卡復仇記 © 2026 — Art by <a href="#">PixelLab</a></p>
+  <p style="margin-top:8px;">韓風復仇 × 命運抽卡 視覺小說</p>
+</footer>
+
+<!-- Scroll animation -->
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold:0.15 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
