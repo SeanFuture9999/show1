@@ -658,7 +658,7 @@ function closeChapterEnd() {
     S.chapter = 'chapter1';
     script = CHAPTER1;
     branches = typeof CH1_BRANCHES !== 'undefined' ? CH1_BRANCHES : {};
-    S.idx = 0;
+    S.step = 0;
     run();
   } else if (S.chapter === 'chapter1') {
     showMsg('', '━━ 第二章：秘書的眼淚 ━━\n\n開發中...');
@@ -780,13 +780,13 @@ function debugJump(target) {
   
   // Find label index
   if (typeof target === 'number') {
-    S.idx = target;
+    S.step = target;
   } else {
     const idx = script.findIndex(c => c.label === target);
-    S.idx = idx >= 0 ? idx : 0;
+    S.step = idx >= 0 ? idx : 0;
   }
   
-  console.log('Debug jump to:', target, 'idx:', S.idx);
+  console.log('Debug jump to:', target, 'idx:', S.step);
   run();
 }
 
@@ -832,8 +832,8 @@ function debugJumpCh1(target) {
   
   // Find label index
   const idx = script.findIndex(c => c.label === target);
-  S.idx = idx >= 0 ? idx : 0;
+  S.step = idx >= 0 ? idx : 0;
   
-  console.log('Debug jump Ch1 to:', target, 'idx:', S.idx);
+  console.log('Debug jump Ch1 to:', target, 'idx:', S.step);
   run();
 }
