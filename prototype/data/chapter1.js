@@ -244,6 +244,7 @@ const CHAPTER1 = [
   { type: 'say', speaker: '旻赫', text: '（前世就是這樣。每個週五加班，朴在成每個週五喝酒。公款請客，報帳寫「客戶招待」，實際上去清潭洞吃日料。）' },
   { type: 'say', speaker: '旻赫', text: '（我知道你每一筆假帳。因為前世——清這些爛帳的人是我。）' },
   { type: 'narrate', text: '他完成了方案。然後——朴在成的電腦還開著。密碼和前世一樣，女兒的生日 0913。' },
+  { type: 'cg', src: 'cg_ch1_sneak_computer.jpg' },
 
   // 出牌點 #2
   { type: 'card_play', id: 'play2',
