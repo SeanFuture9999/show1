@@ -70,7 +70,7 @@ const CHAPTER1 = [
   // ═══════════════════════════════════════
   { label: 'ch1_park' },
 
-  { type: 'bg', src: 'office_day.png' },
+  { type: 'cg', src: 'char_park_default.jpg', portrait: true },
   { type: 'narrate', text: '九點四十分。電梯門打開。一個穿著深藍色西裝的中年男人走了出來。西裝繃在肚子上，油頭一絲不亂。法人信用卡掛在胸口的工牌繩上——那張卡比工牌還亮。' },
   { type: 'narrate', text: '腳步很重。整層樓的空氣都微妙地沉了一下。' },
   { type: 'say', speaker: '金智媛', text: '（小聲）來了。朴部長。' },
@@ -79,7 +79,6 @@ const CHAPTER1 = [
   { type: 'say', speaker: '旻赫', text: '（朴在成。前世我在你手下幹了兩年。搶功勞、甩鍋、逼酒、當眾羞辱——你什麼都做了。）' },
   { type: 'say', speaker: '旻赫', text: '（但你最厲害的不是這些。你最厲害的是——讓所有人覺得你是個好上司。「嚴格但有能力」。呵。）' },
 
-  { type: 'cg', src: 'char_park_default.jpg', portrait: true },
   { type: 'narrate', text: '朴在成掃了一眼辦公區，目光停在旻赫身上——新面孔。他走了過來。' },
   { type: 'say', speaker: '朴在成', text: '新來的？' },
   { type: 'say', speaker: '旻赫', text: '朴部長好，我是姜旻——' },
