@@ -173,6 +173,7 @@ const CHAPTER1 = [
 
   // 週會
   { type: 'narrate', text: '週會。十二個人坐在橢圓形會議桌旁。朴在成站在投影幕前，遙控筆轉得飛起。' },
+  { type: 'cg', src: 'cg_ch1_meeting_present.jpg' },
   { type: 'say', speaker: '朴在成', text: '吳常務，各位——這是我帶領團隊做的 Q2 市場分析。我個人花了大量時間梳理數據——' },
   { type: 'narrate', text: '投影亮起。每一頁 PPT 都是旻赫的。' },
   { type: 'say', speaker: '金智媛', text: '（小聲）……這不是你的報告嗎？' },
