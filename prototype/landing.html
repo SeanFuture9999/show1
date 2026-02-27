@@ -59,6 +59,14 @@ body {
   animation:bounce 2s ease infinite;
 }
 @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+.hero-btn {
+  margin-bottom:0; font-size:clamp(16px, 4vw, 20px);
+  padding:14px 48px; animation:heroPulse 3s ease-in-out infinite;
+}
+@keyframes heroPulse {
+  0%,100%{box-shadow:0 4px 20px rgba(201,169,78,0.4)}
+  50%{box-shadow:0 4px 40px rgba(201,169,78,0.7)}
+}
 
 /* ===== SECTIONS ===== */
 section { padding:80px 24px; max-width:720px; margin:0 auto; }
@@ -223,7 +231,9 @@ footer a { color:#c9a94e; text-decoration:none; }
       重生回到五年前，手腕上多了一只<em>命運懷錶</em>。<br>
       三張牌。一次機會。<em>這次，輪到你跪了。</em>
     </p>
-    <div class="scroll-hint">▼</div>
+    <a href="https://seanfuture9999.github.io/show1/prototype/index_v3.html" class="cta-btn hero-btn">立 即 遊 玩</a>
+    <p class="cta-note" style="margin-top:12px;">免費體驗序章完整內容｜手機 / 電腦皆可</p>
+    <div class="scroll-hint" style="margin-top:20px;">▼</div>
   </div>
 </div>
 
@@ -389,7 +399,7 @@ footer a { color:#c9a94e; text-decoration:none; }
       <span>무릎 꿇는 건 네 차례다.</span>
     </p>
     <p class="cta-sub">輪到你跪了。</p>
-    <a href="index_v3.html" class="cta-btn">立 即 遊 玩</a>
+    <a href="https://seanfuture9999.github.io/show1/prototype/index_v3.html" class="cta-btn">立 即 遊 玩</a>
     <p class="cta-note">免費體驗序章完整內容｜手機 / 電腦皆可</p>
   </div>
 </div>
