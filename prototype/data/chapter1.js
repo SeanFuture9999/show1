@@ -202,6 +202,7 @@ const CHAPTER1 = [
 
   // Scene 01 收尾（共通）
   { type: 'narrate', text: '週會結束。旻赫在筆記本上記了一行字——不是會議紀錄。' },
+  { type: 'cg', src: 'cg_ch1_notebook_329.jpg' },
   { type: 'say', speaker: '旻赫', text: '（3/29。搶功勞。第一次。帳本開始記了。）' },
 
   // ═══════════════════════════════════════
