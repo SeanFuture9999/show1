@@ -118,6 +118,7 @@ const CHAPTER1 = [
   { type: 'narrate', text: '她轉身走了。走到門口，停了一下。回頭看了旻赫一眼——他坐在辦公室裡，電腦螢幕的光打在臉上。很專注的樣子。' },
   { type: 'narrate', text: '她不知道為什麼，覺得這個新人不太一樣。' },
   { type: 'narrate', text: '然後她走了幾步，又折回來。把一杯冰美式咖啡放在旻赫桌角。沒說話就離開了。' },
+  { type: 'cg', src: 'cg_ch1_05_coffee.jpg' },
   { type: 'narrate', text: '旻赫低頭看到咖啡。愣了一下。' },
   { type: 'say', speaker: '旻赫', text: '（……前世也是這樣。第一天加班，她放了一杯咖啡就走。我到第二天才發現，咖啡都化了。）' },
   { type: 'say', speaker: '旻赫', text: '（這一次我看到了。）' },
@@ -268,6 +269,7 @@ const CHAPTER1 = [
   { type: 'shake' },
   { type: 'say', speaker: '朴在成', text: '야, 너 몇 년차야?（喂，你幾年資？）第一個月就敢拒絕부장的酒？我在盛元十五年！從來沒見過！' },
   { type: 'narrate', text: '包廂沒人說話。有人尷尬低頭夾肉。有人假裝上廁所。只有金智媛的筷子在桌面上敲得噹噹響。' },
+  { type: 'cg', src: 'cg_ch1_02_jiwon.jpg' },
   { type: 'arrogance', delta: 20, reason: '會食逼酒' },
 
   // 出牌點 #3
@@ -315,7 +317,9 @@ const CHAPTER1 = [
   // Scene 06：朴在成的傷疤（過場）
   // ═══════════════════════════════════════
   { label: "ch1_parkscar" },
+  { type: 'bg', src: 'breakroom.jpg' },
   { type: 'narrate', text: '午休。旻赫路過茶水間，聽到朴在成在打電話。' },
+  { type: 'cg', src: 'cg_ch1_06_hallway.jpg' },
   { type: 'say', speaker: '朴在成', text: '（聲音壓得很低）수진아……응, 아빠야.（秀珍啊……嗯，是爸爸。）' },
   { type: 'say', speaker: '朴在成', text: '학원비 보냈어. 이번 달은 좀 늦어서 미안.（補習班費轉了。晚了，抱歉。）' },
   { type: 'say', speaker: '朴在成', text: '……수능 잘 볼 거야. 아빠가 믿어.（高考一定會考好的。爸爸相信你。）' },
@@ -327,6 +331,8 @@ const CHAPTER1 = [
   // Scene 07：茶水間——最後的警告
   // ═══════════════════════════════════════
   { label: "ch1_threat" },
+  { type: 'cg_hide' },
+  { type: 'bg', src: 'breakroom.jpg' },
   { type: 'narrate', text: '午休結束。朴在成堵住旻赫。' },
   { type: 'say', speaker: '朴在成', text: '聽說你上週跟吳常務單獨談了？' },
   { type: 'say', speaker: '旻赫', text: '吳常務問我一些數據——' },
@@ -364,6 +370,7 @@ const CHAPTER1 = [
   { type: 'narrate', text: '會議室。吳常務坐在主位。HR 金部長在旁邊。朴在成走進來，看到這陣仗，腳步頓了一下。' },
   { type: 'say', speaker: '朴在成', text: '（笑得不自然）吳常務？今天什麼風把大家吹來了？' },
   { type: 'say', speaker: '吳常務', text: '朴部長，坐。有些事情需要確認。姜旻赫也在。' },
+  { type: 'cg', src: 'cg_ch1_03_meeting.jpg' },
   { type: 'narrate', text: '朴在成轉頭，看到旻赫坐在角落。旻赫微笑著。那個溫和的、不到眼睛的微笑。' },
   { type: 'say', speaker: '朴在成', text: '（強撐）好啊。吳常務，我這十五年的忠誠度——您是清楚的。' },
 
