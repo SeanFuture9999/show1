@@ -77,7 +77,7 @@ const CHAPTER1 = [
   { type: 'say', speaker: '旻赫', text: '（朴在成。前世我在你手下幹了兩年。搶功勞、甩鍋、逼酒、當眾羞辱——你什麼都做了。）' },
   { type: 'say', speaker: '旻赫', text: '（但你最厲害的不是這些。你最厲害的是——讓所有人覺得你是個好上司。「嚴格但有能力」。呵。）' },
 
-  { type: 'cg', src: 'char_new_01_park.jpg', portrait: true },
+  { type: 'cg', src: 'char_park_default.jpg', portrait: true },
   { type: 'narrate', text: '朴在成掃了一眼辦公區，目光停在旻赫身上——新面孔。他走了過來。' },
   { type: 'say', speaker: '朴在成', text: '新來的？' },
   { type: 'say', speaker: '旻赫', text: '朴部長好，我是姜旻——' },
@@ -325,7 +325,7 @@ const CHAPTER1 = [
   { label: "ch1_parkscar" },
   { type: 'bg', src: 'breakroom.jpg' },
   { type: 'narrate', text: '午休。旻赫路過茶水間，聽到朴在成在打電話。' },
-  { type: 'cg', src: 'cg_ch1_06_hallway.jpg' },
+  { type: 'cg', src: 'char_new_01_park.jpg', portrait: true },
   { type: 'say', speaker: '朴在成', text: '（聲音壓得很低）수진아……응, 아빠야.（秀珍啊……嗯，是爸爸。）' },
   { type: 'say', speaker: '朴在成', text: '학원비 보냈어. 이번 달은 좀 늦어서 미안.（補習班費轉了。晚了，抱歉。）' },
   { type: 'say', speaker: '朴在成', text: '……수능 잘 볼 거야. 아빠가 믿어.（高考一定會考好的。爸爸相信你。）' },
