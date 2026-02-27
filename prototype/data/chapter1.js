@@ -36,6 +36,7 @@ const CHAPTER1 = [
   { type: 'narrate', text: '他看了一眼隔壁座位——桌上堆滿了辣味零食。辣蝦條、辣雞麵調味包、辣味魷魚絲，紅通通一片像個小型辣椒博物館。螢幕邊貼了一張便利貼，用很醜但很用力的字寫著：「{{오늘도 살아남자!}}（今天也要活下去！）」' },
   { type: 'say', speaker: '旻赫', text: '（……這個座位。這些零食。我記得。）' },
   { type: 'narrate', text: '他剛放下背包——' },
+  { type: 'cg', src: 'char_jiwon_default.jpg', portrait: true },
   { type: 'say', speaker: '金智媛', text: '{{안녕하세요!}}（你好！）新來的對吧？經營企劃部？' },
   { type: 'narrate', text: '一個短髮女生從隔壁座位探過頭來。嘴裡嚼著辣味蝦條，耳釘反射著早晨的光，牛仔外套套在正裝外面——完全不符合盛元集團的 dress code。眼睛很亮，笑得像早晨八點就喝了三杯美式的人。聲音大得旁邊兩排都轉頭看了一眼。' },
   { type: 'say', speaker: '金智媛', text: '我叫金智媛！你旁邊座！{{잘 부탁해요～}}（請多指教～）' },
@@ -61,6 +62,7 @@ const CHAPTER1 = [
   { type: 'say', speaker: '金智媛', text: '嗯！有什麼不懂的問我就好！{{언니가 다 알려줄게!}}（姐姐什麼都教你！）' },
   { type: 'say', speaker: '旻赫', text: '……你比我小吧。' },
   { type: 'say', speaker: '金智媛', text: '（愣了一秒）……{{아 진짜?}}（啊真的嗎？）那——那也叫我智媛就好！不要叫前輩，太老了！' },
+  { type: 'cg_hide' },
 
   // ═══════════════════════════════════════
   // Scene 00C：初遇朴在成
@@ -75,6 +77,7 @@ const CHAPTER1 = [
   { type: 'say', speaker: '旻赫', text: '（朴在成。前世我在你手下幹了兩年。搶功勞、甩鍋、逼酒、當眾羞辱——你什麼都做了。）' },
   { type: 'say', speaker: '旻赫', text: '（但你最厲害的不是這些。你最厲害的是——讓所有人覺得你是個好上司。「嚴格但有能力」。呵。）' },
 
+  { type: 'cg', src: 'char_new_01_park.jpg', portrait: true },
   { type: 'narrate', text: '朴在成掃了一眼辦公區，目光停在旻赫身上——新面孔。他走了過來。' },
   { type: 'say', speaker: '朴在成', text: '新來的？' },
   { type: 'say', speaker: '旻赫', text: '朴部長好，我是姜旻——' },
@@ -84,6 +87,8 @@ const CHAPTER1 = [
   { type: 'say', speaker: '朴在成', text: '別做錯。做錯了重做，還是今天之內。' },
   { type: 'arrogance', delta: 10, reason: '甩文件立威' },
   { type: 'narrate', text: '門關上了。金智媛的臉都氣歪了。' },
+  { type: 'cg_hide' },
+  { type: 'bg', src: 'office_day.png' },
   { type: 'say', speaker: '金智媛', text: '（壓低聲音）……別介意。他對每個新人都這樣。尤其是——' },
   { type: 'narrate', text: '她看了看門口，確定朴在成走遠了。' },
   { type: 'say', speaker: '金智媛', text: '尤其是比他能幹的新人。他怕。' },
@@ -114,6 +119,7 @@ const CHAPTER1 = [
   { type: 'say', speaker: '金智媛', text: '欸，第一天就加班啊？你不用——' },
   { type: 'say', speaker: '旻赫', text: '沒在加班。在做一個有趣的東西。' },
   { type: 'say', speaker: '旻赫', text: '（抬頭，微笑）明天給你看。' },
+  { type: 'cg', src: 'char_new_03_jiwon_shy.jpg', portrait: true },
   { type: 'say', speaker: '金智媛', text: '（看了看他）……怪人。' },
   { type: 'narrate', text: '她轉身走了。走到門口，停了一下。回頭看了旻赫一眼——他坐在辦公室裡，電腦螢幕的光打在臉上。很專注的樣子。' },
   { type: 'narrate', text: '她不知道為什麼，覺得這個新人不太一樣。' },
@@ -369,6 +375,7 @@ const CHAPTER1 = [
   { type: 'narrate', text: '週一。旻赫給吳常務的秘書發了一封信：「有關經營企劃部的內部管理問題，建議安排一次會議。證據已整理完畢。」吳常務沒有猶豫。' },
   { type: 'narrate', text: '會議室。吳常務坐在主位。HR 金部長在旁邊。朴在成走進來，看到這陣仗，腳步頓了一下。' },
   { type: 'say', speaker: '朴在成', text: '（笑得不自然）吳常務？今天什麼風把大家吹來了？' },
+  { type: 'cg', src: 'char_new_02_oh.jpg', portrait: true },
   { type: 'say', speaker: '吳常務', text: '朴部長，坐。有些事情需要確認。姜旻赫也在。' },
   { type: 'cg', src: 'cg_ch1_03_meeting.jpg' },
   { type: 'narrate', text: '朴在成轉頭，看到旻赫坐在角落。旻赫微笑著。那個溫和的、不到眼睛的微笑。' },
