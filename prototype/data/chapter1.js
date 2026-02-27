@@ -118,7 +118,7 @@ const CHAPTER1 = [
 
   { type: 'narrate', text: '辦公室的人一個接一個離開。七點。八點。九點。最後只剩旻赫一個人還在敲鍵盤。' },
   { type: 'narrate', text: '金智媛下班前經過他座位。' },
-  { type: 'cg', src: 'cg_ch1_overtime_back.jpg' },
+  { type: 'cg', src: 'cg_ch1_jiwon_curious.jpg' },
   { type: 'say', speaker: '金智媛', text: '欸，第一天就加班啊？你不用——' },
   { type: 'say', speaker: '旻赫', text: '沒在加班。在做一個有趣的東西。' },
   { type: 'say', speaker: '旻赫', text: '（抬頭，微笑）明天給你看。' },
