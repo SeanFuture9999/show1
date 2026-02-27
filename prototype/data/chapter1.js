@@ -210,6 +210,7 @@ const CHAPTER1 = [
   // ═══════════════════════════════════════
   { label: "ch1_humiliate" },
   { type: 'narrate', text: '第三週。嚐到甜頭的朴在成開始加碼。他需要旻赫繼續輸出——同時確保旻赫不敢反抗。' },
+  { type: 'cg', src: 'cg_ch1_public_scold.jpg' },
   { type: 'say', speaker: '朴在成', text: '（扯著嗓子，整層樓都聽到）姜旻赫！你的客戶跟進表呢？都第三天了！' },
   { type: 'say', speaker: '旻赫', text: '朴部長，昨天下午已經發到您信箱——' },
   { type: 'say', speaker: '朴在成', text: '（拍桌）我！沒！收！到！連發郵件都不會嗎？' },
