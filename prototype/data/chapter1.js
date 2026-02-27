@@ -82,6 +82,7 @@ const CHAPTER1 = [
   { type: 'narrate', text: '朴在成掃了一眼辦公區，目光停在旻赫身上——新面孔。他走了過來。' },
   { type: 'say', speaker: '朴在成', text: '新來的？' },
   { type: 'say', speaker: '旻赫', text: '朴部長好，我是姜旻——' },
+  { type: 'cg', src: 'cg_ch1_files_slam.jpg' },
   { type: 'narrate', text: '朴在成打斷了他。直接把一疊文件甩到桌上。' },
   { type: 'say', speaker: '朴在成', text: '這些今天之內整理完。明天早上之前放我桌上。' },
   { type: 'narrate', text: '頭也不回走了兩步。又停下來。' },
@@ -117,6 +118,7 @@ const CHAPTER1 = [
 
   { type: 'narrate', text: '辦公室的人一個接一個離開。七點。八點。九點。最後只剩旻赫一個人還在敲鍵盤。' },
   { type: 'narrate', text: '金智媛下班前經過他座位。' },
+  { type: 'cg', src: 'cg_ch1_overtime_back.jpg' },
   { type: 'say', speaker: '金智媛', text: '欸，第一天就加班啊？你不用——' },
   { type: 'say', speaker: '旻赫', text: '沒在加班。在做一個有趣的東西。' },
   { type: 'say', speaker: '旻赫', text: '（抬頭，微笑）明天給你看。' },
