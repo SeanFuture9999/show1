@@ -69,11 +69,11 @@ const CHAPTER1 = [
   // Scene 00C：初遇朴在成
   // ═══════════════════════════════════════
   { label: 'ch1_park' },
-
+  { type: 'bg', src: 'office_day.png' },
+  { type: 'say', speaker: '金智媛', text: '（小聲）來了。朴部長。' },
   { type: 'cg', src: 'char_park_default.jpg', portrait: true },
   { type: 'narrate', text: '九點四十分。電梯門打開。一個穿著深藍色西裝的中年男人走了出來。西裝繃在肚子上，油頭一絲不亂。法人信用卡掛在胸口的工牌繩上——那張卡比工牌還亮。' },
   { type: 'narrate', text: '腳步很重。整層樓的空氣都微妙地沉了一下。' },
-  { type: 'say', speaker: '金智媛', text: '（小聲）來了。朴部長。' },
   { type: 'narrate', text: '朴在成。四十七歲。經營企劃部部長。在盛元待了十五年。那種眼神不是打量——是估價。像在看一塊可以搾多少汁的抹布。' },
   { type: 'narrate', text: '旻赫看著他——五年的記憶像開了閘的水一樣湧上來。' },
   { type: 'say', speaker: '旻赫', text: '（朴在成。前世我在你手下幹了兩年。搶功勞、甩鍋、逼酒、當眾羞辱——你什麼都做了。）' },
