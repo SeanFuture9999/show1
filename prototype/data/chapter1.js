@@ -166,6 +166,7 @@ const CHAPTER1 = [
   { type: 'bg', src: 'sungwon_lobby_v2.jpg' },
   { type: 'narrate', text: '入職兩週。姜旻赫用前世五年的經驗，做出了一份遠超新人水準的 Q2 市場分析報告。前世花了三個月——這一次只用了兩個通宵。' },
   { type: 'narrate', text: '但他做了一件前世不會做的事：他把報告交給了朴在成。' },
+  { type: 'cg', src: 'cg_ch1_report_handover.jpg' },
   { type: 'say', speaker: '旻赫', text: '（前世，我直接把報告交給吳常務。朴在成氣瘋了，找了我兩年麻煩。）' },
   { type: 'say', speaker: '旻赫', text: '（這一次——我把報告給你。讓你搶。讓你表演。）' },
   { type: 'say', speaker: '旻赫', text: '（因為搶來的東西，被揭穿的時候最痛。）' },
