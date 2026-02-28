@@ -94,7 +94,7 @@ const PROLOGUE = [
   { type: 'say', speaker: '姜旻赫', text: '…………我回來了。' },
   { type: 'narrate', text: '他的手開始發抖。不是恐懼。不是喜悅。是壓了五年的所有情緒——在一瞬間找到了出口。' },
   
-  { type: 'narrate', text: '他低頭看自己的手——年輕的手，沒有傷疤，十根指頭完好無缺。然後他看見了。左手腕上，多了一只懷錶。' },
+  { type: 'narrate', text: '他低頭看自己的手——年輕的手，沒有傷疤，十根指頭完好無缺。然後他看見了。懷中，多了一只懷錶。' },
   { type: 'cg', src: 'cg_watch_glow_v2.jpg', pan: { zoom: { from: 0.9, to: 1.15 }, duration: 10000 }, label: 'watch' },
   { type: 'narrate', text: '古舊的金色錶殼。紋路像是被什麼人握了很久很久。錶面不走時間。但錶殼在微微發溫。' },
   { type: 'say', speaker: '姜旻赫', text: '……這是什麼？' },
@@ -128,7 +128,7 @@ const PROLOGUE = [
 
   // 命運之牌（懷錶靜態，不做 zoom）
   { type: 'cg', src: 'cg_watch_glow_v2.jpg', label: 'cards' },
-  { type: 'narrate', text: '走出紫菜包飯店。三月的首爾，冷風從漢江的方向吹來。手腕上的懷錶忽然燙了起來。' },
+  { type: 'narrate', text: '走出紫菜包飯店。三月的首爾，冷風從漢江的方向吹來。懷中的懷錶忽然燙了起來。' },
   { type: 'say', speaker: '旻赫', text: '又怎麼了？' },
   { type: 'say', speaker: '【懷錶】', text: '[[你活過來了。吃飽了。哭也哭了。]]' },
   { type: 'say', speaker: '【懷錶】', text: '[[那——準備好收禮物了嗎？]]' },
@@ -146,7 +146,7 @@ const PROLOGUE = [
   { type: 'cg_hide' },
   { type: 'narrate', text: '旻赫站在路口。左邊是去盛元集團的地鐵站。他沒有猶豫。轉身走向左邊。' },
   { type: 'say', speaker: '旻赫', text: '（盛元集團。入職第一天。上一次，我走進那扇門是來賣命的。這一次——我是來收債的。）' },
-  { type: 'narrate', text: '他低頭看了一眼手腕。懷錶的光已經暗了，但金色的紋路在陽光下像一條細細的蛇。' },
+  { type: 'narrate', text: '他低頭看了一眼懷中。懷錶的光已經暗了，但金色的紋路在陽光下像一條細細的蛇。' },
   { type: 'say', speaker: '旻赫', text: '（三張牌。夠了。先夠了。）' },
   { type: 'effect', name: 'fadeout' },
   { type: 'wait', ms: 1000 },
