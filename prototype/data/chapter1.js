@@ -632,6 +632,7 @@ const CH1_BRANCHES = {
   // ===== 出牌點 #3：會食 =====
 
   'p3_fool': [
+    { type: 'cg', src: 'cg_ch1_soju_drink.jpg' },
     { type: 'narrate', text: '旻赫端起酒杯——猶豫了一秒——然後一飲而盡。' },
     { type: 'say', speaker: '旻赫', text: '（咳了一下）부장님，再教我一杯。' },
     { type: 'narrate', text: '朴在成大笑。得意到極點。他完全不知道——旻赫在喝酒的空檔，看到了他從口袋掏出法人信用卡結帳的畫面。手機放在桌下。快門無聲。' },
