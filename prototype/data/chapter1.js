@@ -240,6 +240,8 @@ const CHAPTER1 = [
   // Scene 03：加班陷阱 + 帳本（第三週週五）
   // ═══════════════════════════════════════
   { label: "ch1_overtime" },
+  { type: 'cg_hide' },
+  { type: 'bg', src: 'office_night.png' },
   { type: 'narrate', text: '週五晚上十點半。整層辦公室只剩旻赫一個人。' },
   { type: 'narrate', text: '朴在成下午甩了一個「緊急方案」要求今晚完成——但旻赫知道，截止日期是下下週。朴在成自己呢？跟供應商去「客戶招待」了——用公款。' },
   { type: 'arrogance', delta: 15, reason: '加班陷阱' },
