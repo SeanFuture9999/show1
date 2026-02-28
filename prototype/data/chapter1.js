@@ -14,6 +14,7 @@ const CHAPTER1 = [
 
   { type: 'bg', src: 'sungwon_lobby_v2.jpg' },
   { type: 'narrate', text: '2021 年 3 月 15 日，早晨八點四十五分。盛元集團總部大樓。' },
+  { type: 'cg', src: 'cg_ch1_revolving_door.jpg' },
   { type: 'narrate', text: '純白色大理石大廳，旋轉門永遠閃著光。推門進去的瞬間，冷氣和咖啡香撲面而來。前台小姐的假笑、保全的面無表情、那個永遠壞掉的三號電梯——全部一模一樣。' },
   { type: 'say', speaker: '旻赫', text: '（……一樣的大廳。連那盆假的發財樹都沒換。）' },
   { type: 'say', speaker: '旻赫', text: '（上一次，我走進這扇門是來賣命的。五年青春換來一個副社長的頭銜——然後被從天台推了下去。）' },
