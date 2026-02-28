@@ -278,8 +278,9 @@ const CHAPTER1 = [
   // ═══════════════════════════════════════
   { label: "ch1_hoesik" },
   { type: 'cg_hide' },
-  { type: 'cg', src: 'cg_ch1_hoesik_soju.jpg' },
+  { type: 'bg', src: 'bbq_restaurant.jpg' },
   { type: 'narrate', text: '韓國職場的會食——名義上是團隊聚餐，實際上是權力遊戲的延伸。朴在成的會食更狠——他用酒來碾人。' },
+  { type: 'cg', src: 'cg_ch1_hoesik_soju.jpg' },
   { type: 'say', speaker: '朴在成', text: '（三杯燒酒下肚）姜旻赫！來，給부장倒一杯！' },
   { type: 'say', speaker: '旻赫', text: '（雙手倒酒）부장님, 한 잔 드세요.' },
   { type: 'say', speaker: '朴在成', text: '（一口乾）好！你也喝！' },
