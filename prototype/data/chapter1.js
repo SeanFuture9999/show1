@@ -342,56 +342,133 @@ const CHAPTER1 = [
   { type: 'say', speaker: '旻赫', text: '（我同情你——但你報的假帳、搶的功勞、踩的每一個人……你要還。）' },
 
   // ═══════════════════════════════════════
-  // Scene 07：茶水間——最後的警告
+  // Scene 07：朴在成針對智媛
   // ═══════════════════════════════════════
-  { label: "ch1_threat" },
+  { label: "ch1_target_jiwon" },
   { type: 'cg_hide' },
-  { type: 'bg', src: 'breakroom.jpg' },
-  { type: 'narrate', text: '午休結束。朴在成堵住旻赫。' },
-  { type: 'say', speaker: '朴在成', text: '聽說你上週跟吳常務單獨談了？' },
-  { type: 'say', speaker: '旻赫', text: '吳常務問我一些數據——' },
-  { type: 'shake' },
-  { type: 'say', speaker: '朴在成', text: '（一掌拍牆）야. 이 부서에서는 내가 왕이야.（在這個部門，我是王。）' },
-  { type: 'say', speaker: '朴在成', text: '所有事情，先過我。시용기간 통과 못 할 수도 있어, 알지?（試用期可能過不了，知道吧？）' },
-  { type: 'arrogance', delta: 20, reason: '人身威脅' },
-
-  // 出牌點 #4
-  { type: 'card_play', id: 'play4',
-    prompt: '[[他把你逼到牆角了。五張牌——選一張。]]',
-    cards: ['fool', 'gluttony', 'judgement', 'seen', 'cain'],
-    hints: {
-      fool:     '他覺得你已經跪了。跪著的人……可以去很多站著去不了的地方。',
-      gluttony: '走廊裡，面對面，一對一……觀眾呢？',
-      judgement: '鐵證要在法庭上亮。這裡是走廊——不是法庭。',
-      seen:     '一把小刀。不致命，但會讓他知道你不好惹。想刺嗎？',
-      cain:     '讓他知道你看見了他的記號……他會怕。但怕的人——會咬人。'
-    },
-    results: {
-      fool:     { rating: 'best', arrogance: 0, branch: 'p4_fool' },
-      gluttony: { rating: 'wrong', arrogance: 5, branch: 'p4_wrong' },
-      judgement:{ rating: 'wrong', arrogance: 5, branch: 'p4_wrong' },
-      seen:     { rating: 'ok', arrogance: -5, branch: 'p4_seen' },
-      cain:     { rating: 'ok', arrogance: 0, branch: 'p4_cain' }
-    }
-  },
+  { type: 'bg', src: 'office_day.png' },
+  { type: 'narrate', text: '但朴在成的下一刀——沒有砍向旻赫。' },
+  { type: 'narrate', text: '他砍向了智媛。' },
+  { type: 'say', speaker: '朴在成', text: '（站在智媛座位前，把一份印出的郵件甩到桌上）金智媛。你的客戶提案——被退回了。' },
+  { type: 'say', speaker: '金智媛', text: '（愣）什麼？我昨天才發——' },
+  { type: 'say', speaker: '朴在成', text: '客戶說格式不對、數據有誤。你看看你寫的什麼東西。' },
+  { type: 'say', speaker: '金智媛', text: '……這不是我的版本。我交出去的——' },
+  { type: 'say', speaker: '朴在成', text: '你的版本？呵。入職比姜旻赫還早，做事還不如他。' },
+  { type: 'arrogance', delta: 15, reason: '針對智媛' },
+  { type: 'narrate', text: '整層樓都聽到了。智媛的臉漲得通紅——不是害羞，是氣的。但她沒反駁。因為朴在成手裡握著她的試用期評鑑。' },
+  { type: 'say', speaker: '朴在成', text: '（壓低聲音，只有智媛聽到）회식에서 그렇게 큰소리 치더니, 일은 이 모양이야?（會食上嗓門那麼大，工作就這樣？）' },
+  { type: 'narrate', text: '他走了。智媛坐在座位上，握著筆的手在發抖。不是怕。是忍。' },
+  { type: 'narrate', text: '旻赫看到了。全部都看到了。' },
+  { type: 'say', speaker: '旻赫', text: '（……來了。跟前世一模一樣。會食之後，他開始針對智媛。）' },
+  { type: 'say', speaker: '旻赫', text: '（前世——調最爛的案子、公開挑錯、逼加班到凌晨。三個月。她撐了三個月就離職了。）' },
+  { type: 'say', speaker: '旻赫', text: '（走的那天她一個人搬紙箱。我路過——什麼都沒做。）' },
+  { type: 'say', speaker: '旻赫', text: '（因為那時候的我有老婆。老婆說別惹事，升職最重要。她說得對——在那一世裡。）' },
+  { type: 'narrate', text: '旻赫攥緊了拳頭。手腕上的懷錶微微震動。' },
+  { type: 'say', speaker: '【懷錶】', text: '[[你的計畫是三個月後動手。現在才第五週。]]' },
+  { type: 'say', speaker: '【懷錶】', text: '[[你確定要打亂節奏？]]' },
+  { type: 'narrate', text: '旻赫沒有回答懷錶。他看著智媛的背影——她在偷偷擦眼角。' },
 
   // ═══════════════════════════════════════
-  // Scene 08：終局——會議室處刑
+  // Scene 08：頂撞——計畫提前
+  // ═══════════════════════════════════════
+  { label: "ch1_confront" },
+  { type: 'narrate', text: '下午三點。朴在成又把智媛叫進辦公室。門沒關。所有人都聽到裡面的聲音。' },
+  { type: 'say', speaker: '朴在成', text: '（咆哮）這個月你的 KPI 是全組最低的！' },
+  { type: 'say', speaker: '金智媛', text: '（聲音在抖）부장님，那個客戶是您臨時調——' },
+  { type: 'say', speaker: '朴在成', text: '你在找藉口？' },
+  { type: 'narrate', text: '門被推開了。' },
+  { type: 'shake' },
+  { type: 'say', speaker: '旻赫', text: '朴部長。' },
+  { type: 'narrate', text: '辦公室安靜了。所有人轉頭看。' },
+  { type: 'say', speaker: '朴在成', text: '（冷笑）姜旻赫？誰讓你進來的？' },
+  { type: 'say', speaker: '旻赫', text: '智媛的客戶提案被退回——我看了那封郵件。' },
+  { type: 'say', speaker: '旻赫', text: '發件人是張代理。但張代理上週出差，根本不在辦公室。那封退回郵件的發件時間……有問題。' },
+  { type: 'narrate', text: '朴在成的臉色變了。' },
+  { type: 'say', speaker: '旻赫', text: '（語氣平靜）而且智媛交出去的版本跟被退回的版本——不是同一個檔案。有人改過。' },
+  { type: 'say', speaker: '朴在成', text: '（拍桌）你在指控誰？！你一個試用期的——' },
+  { type: 'say', speaker: '旻赫', text: '沒有指控任何人。我只是覺得……可能有誤會。建議朴部長確認一下。' },
+  { type: 'narrate', text: '整層樓都在看。朴在成的臉從紅變白，再從白變紅。' },
+  { type: 'say', speaker: '朴在成', text: '（壓著聲音）야. 너 지금 뭐 하는 거야.（你現在在幹什麼。）' },
+  { type: 'narrate', text: '旻赫直視他的眼睛。沒有回答。不需要回答。所有人都看到了。' },
+  { type: 'flash', color: '#ffffff', duration: 300 },
+  { type: 'shake' },
+  { type: 'arrogance', delta: 25, reason: '頂撞部長' },
+  { type: 'narrate', text: '空氣凝固了五秒。朴在成轉身回辦公室，「砰」地把門關上。' },
+  { type: 'narrate', text: '智媛看著旻赫。嘴巴張了一下——但什麼都沒說。旻赫也沒看她，直接走回座位。' },
+  { type: 'narrate', text: '她低下頭。手裡的筆攥得更緊了。' },
+  { type: 'say', speaker: '旻赫', text: '（……這一世，我不會再路過了。）' },
+  { type: 'say', speaker: '【懷錶】', text: '[[……計畫亂了。]]' },
+  { type: 'say', speaker: '旻赫', text: '（……）' },
+  { type: 'say', speaker: '【懷錶】', text: '[[你最好有備案。]]' },
+  { type: 'say', speaker: '旻赫', text: '（……從第一天就有。）' },
+
+  // ═══════════════════════════════════════
+  // Scene 09：絞殺——朴在成的全面反擊
+  // ═══════════════════════════════════════
+  { label: "ch1_counterattack" },
+  { type: 'bg', src: 'office_day.png' },
+  { type: 'narrate', text: '朴在成動了。比旻赫預期的更快、更狠。' },
+  { type: 'narrate', text: '第二天。旻赫的信箱裡出現了一封 HR 的約談通知。' },
+  { type: 'say', speaker: 'HR金部長', text: '姜旻赫先生。朴部長提交了一份報告——指出你入職以來多次違反部門流程、未經批准擅自修改文件、對上級態度不敬。' },
+  { type: 'say', speaker: 'HR金部長', text: '考慮到你目前還在試用期……公司正在評估是否延長或終止你的合約。' },
+  { type: 'say', speaker: '旻赫', text: '……我明白了。' },
+  { type: 'narrate', text: '回到辦公區。氣氛已經變了。' },
+  { type: 'narrate', text: '朴在成在背後下了封殺令——跟旻赫說話的人，都會被「關照」。同事們開始迴避旻赫。不是討厭他。是怕。' },
+  { type: 'narrate', text: '旻赫的座位周圍空了一圈。茶水間他進去，別人就出來。連電梯都沒人願意跟他同搭。' },
+  { type: 'say', speaker: '旻赫', text: '（……前世你對智媛就是這樣做的。一模一樣。只是這次對象換成了我。）' },
+  { type: 'say', speaker: '旻赫', text: '（但我跟智媛不一樣。）' },
+
+  // 午休 — 冰美式
+  { type: 'narrate', text: '午休。茶水間。旻赫一個人坐著吃飯糰。' },
+  { type: 'narrate', text: '有人把一杯冰美式放在他面前。沒說話就坐到了對面。' },
+  { type: 'narrate', text: '智媛。' },
+  { type: 'narrate', text: '她什麼都沒說。拆開自己的飯糰，低頭吃。好像只是剛好來這裡吃午餐一樣。' },
+  { type: 'narrate', text: '杯套上寫了字。很醜但很用力的字：\n「야 힘내.（加油。）」' },
+  { type: 'narrate', text: '旻赫看著那行字。沒說話。拿起咖啡，喝了一口。' },
+  { type: 'narrate', text: '苦的。跟第一天那杯一樣。' },
+  { type: 'narrate', text: '兩個人就這樣安靜吃完了午餐。什麼都沒說。' },
+
+  // 旻赫的佈局揭曉（內心戲）
+  { type: 'say', speaker: '旻赫', text: '（……朴在成。你比前世更快動手了。因為我刺了你一刀。）' },
+  { type: 'say', speaker: '旻赫', text: '（但你不知道——我早就知道你會這樣做。因為前世你做過一次了。）' },
+  { type: 'say', speaker: '旻赫', text: '（而我從第一天開始，就準備了一條路——不經過吳常務。）' },
+  { type: 'say', speaker: '旻赫', text: '（因為吳常務不會管。他知道朴在成有問題，但管了等於承認自己的部門有問題。前世他就是這樣——睜一隻眼閉一隻眼。）' },
+  { type: 'say', speaker: '旻赫', text: '（所以這一次，我的信——寄給了集團監察室。）' },
+  { type: 'say', speaker: '旻赫', text: '（搶功勞的追蹤修訂。法人信用卡十四筆假帳。還有朴在成跟韓星科技業務部長停車場密會的照片。）' },
+  { type: 'say', speaker: '旻赫', text: '（寄出的時間——是我被 HR 約談的第二天。）' },
+  { type: 'say', speaker: '旻赫', text: '（也就是說：是朴在成親手把我推到了絕路……而我在絕路上按下了發送鍵。）' },
+  { type: 'say', speaker: '旻赫', text: '（他以為他在殺我。其實他在幫我。）' },
+  { type: 'say', speaker: '旻赫', text: '（因為沒被逼到這一步——我寄出的信就只是「新人報復上司」。）' },
+  { type: 'say', speaker: '旻赫', text: '（但現在——我是一個被打壓的吹哨者。集團監察室最喜歡的劇本。）' },
+
+  // ═══════════════════════════════════════
+  // Scene 10：法務部來了
+  // ═══════════════════════════════════════
+  { label: "ch1_legal" },
+  { type: 'narrate', text: '三天後。旻赫什麼都沒做。沒有找吳常務、沒有寫信、沒有任何動作。' },
+  { type: 'narrate', text: '他不需要做任何事。因為信已經寄出了。' },
+  { type: 'narrate', text: '週一早上。經營企劃部來了兩個沒見過的人。西裝筆挺，公事包。他們走進吳常務辦公室，門關了一個小時。' },
+  { type: 'narrate', text: '消息很快傳開了——集團法務部的人來了。' },
+  { type: 'narrate', text: '智媛轉頭看了旻赫一眼。旻赫在看手機。表情沒有任何變化。' },
+  { type: 'narrate', text: '但智媛注意到——他的手，穩得不像正常人。' },
+
+  // ═══════════════════════════════════════
+  // Scene 11：終局——會議室處刑
   // ═══════════════════════════════════════
   { label: "ch1_boss" },
   { type: 'cg_hide' },
-  { type: 'narrate', text: '週一。旻赫給吳常務的秘書發了一封信：「有關經營企劃部的內部管理問題，建議安排一次會議。證據已整理完畢。」吳常務沒有猶豫。' },
-  { type: 'narrate', text: '會議室。吳常務坐在主位。HR 金部長在旁邊。朴在成走進來，看到這陣仗，腳步頓了一下。' },
-  { type: 'say', speaker: '朴在成', text: '（笑得不自然）吳常務？今天什麼風把大家吹來了？' },
-  { type: 'cg', src: 'char_new_02_oh.jpg', portrait: true },
-  { type: 'say', speaker: '吳常務', text: '朴部長，坐。有些事情需要確認。姜旻赫也在。' },
+  { type: 'narrate', text: '會議室。但這次不一樣。' },
+  { type: 'narrate', text: '吳常務坐在主位。旁邊不只 HR 金部長——還有集團法務部的兩個人。桌上放著一疊很厚的文件。' },
+  { type: 'narrate', text: '朴在成走進來。看到這陣仗——然後看到角落裡坐著的旻赫。' },
+  { type: 'narrate', text: '他的腳步停了整整三秒。' },
+  { type: 'say', speaker: '朴在成', text: '（硬擠出笑容）吳常務……今天什麼風把大家吹來了？' },
+  { type: 'say', speaker: '吳常務', text: '朴部長。坐。集團法務部有一些問題需要確認。' },
   { type: 'cg', src: 'cg_ch1_03_meeting.jpg' },
-  { type: 'narrate', text: '朴在成轉頭，看到旻赫坐在角落。旻赫微笑著。那個溫和的、不到眼睛的微笑。' },
-  { type: 'say', speaker: '朴在成', text: '（強撐）好啊。吳常務，我這十五年的忠誠度——您是清楚的。' },
+  { type: 'narrate', text: '朴在成坐下。他注意到旻赫的表情——不是微笑。是無表情。比微笑更可怕。' },
 
   // BOSS 出牌
   { type: 'card_play', id: 'boss',
-    prompt: '[[時候到了。選一張牌，打響第一槍。剩下的，我會幫你排好。]]',
+    prompt: '[[法務部來了。你只需要打響第一槍——剩下的，系統會碾過去。]]',
     cards: ['fool', 'gluttony', 'judgement', 'seen', 'cain'],
     hints: {
       fool:     '讓他自己說。謊話說得越多，摔得越重。',
@@ -409,41 +486,57 @@ const CHAPTER1 = [
     }
   },
 
-  // 共通打臉演出
-  { type: 'narrate', text: '會議室。連呼吸都聽得到。HR 金部長的手已經在翻文件夾了。' },
-  { type: 'say', speaker: '朴在成', text: '（指著旻赫，手在抖）내가 이 회사에 15 년을 바쳤어! 15 년!（我奉獻了十五年！）你以為你——' },
+  // 共通處刑演出
+  { type: 'narrate', text: '法務部的人翻開文件。朴在成的臉一秒比一秒白。' },
+  { type: 'say', speaker: '法務部', text: '朴在成部長。關於經營企劃部最近三個月的法人信用卡使用紀錄——其中十四筆報帳的收據來源店家，查無營業登記。合計四千七百萬韓元。' },
+  { type: 'narrate', text: '朴在成的手開始抖了。' },
+  { type: 'say', speaker: '朴在成', text: '……那些是正常的業務開——' },
+  { type: 'say', speaker: '法務部', text: '另外，Q2 市場分析報告的文件屬性顯示，原始創建者並非朴部長。追蹤修訂紀錄也顯示有三處數據被覆蓋修改後，用於質疑原創建者的工作品質。' },
+  { type: 'narrate', text: '朴在成猛地站起來。椅子往後倒。' },
+  { type: 'say', speaker: '朴在成', text: '（指著旻赫，手在抖）내가 이 회사에 15 년을 바쳤어! 15 년!（我奉獻了十五年！十五年！）' },
+  { type: 'say', speaker: '朴在成', text: '是你搞的——！你從第一天就在——' },
   { type: 'narrate', text: '旻赫安靜地等他吼完。然後，用全場最低的音量——' },
   { type: 'say', speaker: '旻赫', text: '**부장님.**' },
   { type: 'narrate', text: '朴在成住嘴了。不是因為聲音大——是因為太安靜了。' },
   { type: 'flash', color: '#ffffff', duration: 300 },
   { type: 'shake' },
-  { type: 'say', speaker: '旻赫', text: '**부장님이 가르쳐주신 대로 했을 뿐입니다.**\n**（我只是照著部長教我的做而已。）**' },
+  { type: 'say', speaker: '旻赫', text: '**부장님이 저한테 서류 던진 그 날부터요.**' },
+  { type: 'say', speaker: '旻赫', text: '**（從部長把文件甩到我桌上的那天起。）**' },
   { type: 'flash', color: '#ffffff', duration: 500 },
   { type: 'shake' },
   { type: 'arrogance', delta: -100, reason: '完美打臉' },
 
+  { type: 'narrate', text: '會議室沒有人說話。朴在成的臉像是所有血都抽走了。' },
+  { type: 'say', speaker: '朴在成', text: '（聲音沙啞）……너……대체 뭐야.（你……到底是什麼。）' },
+  { type: 'narrate', text: '旻赫站起來，走到門口。停了一下。沒有回頭。' },
+  { type: 'say', speaker: '旻赫', text: '부장님. 수진이는 서울대 갈 겁니다. 걱정 마세요.' },
+  { type: 'say', speaker: '旻赫', text: '**（部長。秀珍會考上首爾大學的。別擔心。）**' },
+  { type: 'narrate', text: '朴在成像是被雷劈了一樣愣住。他從來沒有跟任何同事提過女兒的名字。' },
+  { type: 'narrate', text: '旻赫走出了會議室。沒有回頭。' },
+
   // 收場
-  { type: 'say', speaker: '吳常務', text: '（放下文件）金部長。按規定走。' },
-  { type: 'narrate', text: '朴在成站在原地。臉色灰白。他看了旻赫一眼——那個微笑他從第一天就開始看。他一直以為是軟弱。不是。是倒計時。' },
-  { type: 'narrate', text: '朴在成走出了會議室。透過玻璃，所有人看到他在自己座位前站了很久。桌上有女兒秀珍的照片。他把照片拿起來，放進口袋。然後開始收東西。' },
+  { type: 'say', speaker: '吳常務', text: '（放下文件，語氣很沉）金部長。按規定走。' },
+  { type: 'narrate', text: '朴在成走出會議室。透過玻璃，所有人看到他在自己座位前站了很久。桌上有女兒秀珍的照片。他把照片拿起來，放進口袋。然後開始收東西。' },
   { type: 'cg', src: 'cg_ch1_04_cardboard.jpg' },
+  { type: 'narrate', text: '十五年。最後裝進一個紙箱。' },
 
   // 走廊
   { type: 'cg_hide' },
-  { type: 'say', speaker: '金智媛', text: '（眼睛亮得像吃了十包辣蝦條）姜旻赫——你！你太！\n니 진짜 대단하다!（你是真的厲害！）' },
-  { type: 'say', speaker: '旻赫', text: '他自己做的事，自己承擔。我只是把事實說出來。' },
-  { type: 'say', speaker: '金智媛', text: '你怎麼準備了這麼多？你第一天就——' },
-  { type: 'say', speaker: '旻赫', text: '智媛씨。' },
-  { type: 'say', speaker: '金智媛', text: '嗯？' },
-  { type: 'say', speaker: '旻赫', text: '謝謝你。會食那天。' },
-  { type: 'say', speaker: '金智媛', text: '（耳朵紅了）那——那不是因為你！誰逼酒我都會站出來的！' },
+  { type: 'narrate', text: '旻赫站在走廊窗邊，看著朴在成的背影消失在旋轉門後面。' },
+  { type: 'narrate', text: '身後傳來腳步聲。很快的腳步聲。' },
+  { type: 'say', speaker: '金智媛', text: '（跑過來，喘著氣）法務部的人跟我說了——我的試用期評鑑會重新審核。朴在成寫的那些……全部不算。' },
   { type: 'say', speaker: '旻赫', text: '嗯。' },
-  { type: 'say', speaker: '金智媛', text: '今天下班去弘大吃辣炒年糕！你請客！' },
-  { type: 'say', speaker: '旻赫', text: '我還沒升職——' },
-  { type: 'say', speaker: '金智媛', text: '遲早的事！走了！' },
+  { type: 'narrate', text: '智媛看著他。沉默了好幾秒。她張嘴，又閉上。像是有一百句話想說，但一句都找不到對的。' },
+  { type: 'narrate', text: '最後她只說了——' },
+  { type: 'say', speaker: '金智媛', text: '……辣炒年糕。弘大那家。你請客。' },
+  { type: 'say', speaker: '旻赫', text: '我還沒升職。' },
+  { type: 'say', speaker: '金智媛', text: '（眼眶紅了，但笑了）遲早的事。走了。' },
+  { type: 'narrate', text: '她走在前面。步伐很快，像怕被看到臉。' },
+  { type: 'narrate', text: '旻赫走在後面。看著她的背影——跟那天一個人搬紙箱的背影重疊了一瞬間。' },
+  { type: 'narrate', text: '然後消失了。因為這一世，她不用搬紙箱了。' },
 
   // 尾聲
-  { type: 'narrate', text: '她走了。旻赫站在走廊，微笑了一下。然後微笑消失了。' },
+  { type: 'narrate', text: '旻赫微笑了一下。然後微笑消失了。' },
   { type: 'say', speaker: '旻赫', text: '（朴在成——結束了。但這只是開始。）' },
   { type: 'say', speaker: '旻赫', text: '（俊宇。你的第一枚棋子要到了。前世，她差點毀了我。這一世——讓我看看能不能把她變成人。）' },
   { type: 'say', speaker: '【懷錶】', text: '[[你的選擇……和上次不一樣了。]]' },
@@ -457,6 +550,7 @@ const CHAPTER1 = [
   { type: 'narrate', text: '「大家好！我是新來的行政秘書崔恩智！」' },
   { type: 'narrate', text: '笑容甜美。手在發抖。手機裡有兩個她最怕收到消息的人——一個是徐俊宇。一個是爸爸。' },
   { type: 'chapter_end', next: '第二章：秘書的眼淚', showAd: true },
+
 ];
 
 // ═══════════════════════════════════════
@@ -559,40 +653,6 @@ const CH1_BRANCHES = {
     { type: 'narrate', text: '卡片暗了下去。不是每個場合都適合出牌。' },
   ],
 
-  // ===== 出牌點 #4：茶水間 =====
-
-  'p4_fool': [
-    { type: 'say', speaker: '旻赫', text: '（一動不動，看著朴在成的眼睛）……부장님.' },
-    { type: 'say', speaker: '朴在成', text: '嗯？' },
-    { type: 'say', speaker: '旻赫', text: '（每個字都像敲釘子——但語氣溫順到極點）…………알겠습니다.（知道了。）' },
-    { type: 'narrate', text: '他退後一步，轉身走了。朴在成看著他的背影，冷笑。' },
-    { type: 'say', speaker: '朴在成', text: '（自言自語）果然。你們延世的也不過如此。' },
-    { type: 'bg', src: 'parking_garage.jpg' },
-  { type: 'narrate', text: '他不知道——旻赫離開茶水間後，走進電梯，到一樓，出大門，繞到停車場。拍了一張照片：朴在成的私家車旁邊停著韓星科技業務部長金昌浩的車。兩台車的入場時間——都是 12:01。朴在成說「跟吳常務開會」的那個午休。' },
-    { type: 'say', speaker: '【懷錶】', text: '[[愚者。你在他面前跪了。然後在他看不見的地方——拿到了最後一塊拼圖。]]' },
-    { type: 'say', speaker: '【懷錶】', text: '[[所有的忍耐都有利息。明天——連本帶利。]]' },
-  ],
-
-  'p4_seen': [
-    { type: 'say', speaker: '旻赫', text: '（掏出手機）朴部長，順便說——上次那封郵件，系統顯示您 4:17 已讀。' },
-    { type: 'narrate', text: '朴在成的表情微微扭曲。' },
-    { type: 'say', speaker: '旻赫', text: '沒什麼。想確認流程。怕以後又出問題。' },
-    { type: 'say', speaker: '【懷錶】', text: '[[已讀。你刺了他一刀。很小——但他知道你不好惹了。]]' },
-    { type: 'say', speaker: '【懷錶】', text: '[[代價：他從現在起會更小心。你的終局，會更難打。]]' },
-  ],
-
-  'p4_cain': [
-    { type: 'say', speaker: '旻赫', text: '朴部長，上次那份報告——您修改的三處，追蹤修訂還開著。我幫您關了。不然被別人看到就不好了。' },
-    { type: 'narrate', text: '朴在成的臉色從紅變白。' },
-    { type: 'say', speaker: '【懷錶】', text: '[[該隱的印記……你讓他知道了「你知道」。]]' },
-    { type: 'say', speaker: '【懷錶】', text: '[[他現在很害怕。害怕的人有兩種反應——退縮，或瘋狂。看看他選哪一種。]]' },
-  ],
-
-  'p4_wrong': [
-    { type: 'say', speaker: '【懷錶】', text: '[[在走廊裡，面對面，一對一……你要翻帳本？]]' },
-    { type: 'say', speaker: '【懷錶】', text: '[[打臉最重要的不只是打——是讓所有人都看到。]]' },
-    { type: 'say', speaker: '【懷錶】', text: '[[忍住。等一個有觀眾的舞台。]]' },
-  ],
 
   // ===== BOSS：會議室處刑 =====
 
