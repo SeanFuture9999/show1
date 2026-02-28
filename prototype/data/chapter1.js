@@ -34,7 +34,7 @@ const CHAPTER1 = [
 
   { type: 'bg', src: 'office_day.png' },
   { type: 'narrate', text: '旻赫找到自己的座位——靠窗第三排，最角落。跟前世一模一樣。' },
-  { type: 'cg', src: 'cg_ch1_jiwon_desk.jpg' },
+  { type: 'cg', src: 'cg_ch1_jiwon_desk.jpg', pan: { start: 'center', to: 'right center', duration: 4000 } },
   { type: 'narrate', text: '他看了一眼隔壁座位——桌上堆滿了辣味零食。辣蝦條、辣雞麵調味包、辣味魷魚絲，紅通通一片像個小型辣椒博物館。螢幕邊貼了一張便利貼，用很醜但很用力的字寫著：「{{오늘도 살아남자!}}（今天也要活下去！）」' },
   { type: 'say', speaker: '旻赫', text: '（……這個座位。這些零食。我記得。）' },
   { type: 'narrate', text: '他剛放下背包——' },
