@@ -51,6 +51,7 @@ const CHAPTER1 = [
   { type: 'say', speaker: '金智媛', text: '旻赫？延世的？！我也是延世的！哪個系？' },
   { type: 'say', speaker: '旻赫', text: '經營學。' },
   { type: 'say', speaker: '金智媛', text: '天哪我也經營學！你哪屆——算了不重要！' },
+  { type: 'cg', src: 'cg_ch1_shrimp_chips.jpg' },
   { type: 'narrate', text: '她塞了一包辣味蝦條過來。' },
   { type: 'say', speaker: '金智媛', text: '拿著。這牌子只有釜山才買得到，我每次回家都扛一箱。你別跟別人說我在辦公室吃零食就好，嘿嘿。' },
   { type: 'narrate', text: '旻赫接過來，拆開，吃了一片。' },
