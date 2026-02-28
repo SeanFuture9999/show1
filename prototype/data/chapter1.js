@@ -274,6 +274,7 @@ const CHAPTER1 = [
   // ═══════════════════════════════════════
   { label: "ch1_hoesik" },
   { type: 'narrate', text: '韓國職場的會食——名義上是團隊聚餐，實際上是權力遊戲的延伸。朴在成的會食更狠——他用酒來碾人。' },
+  { type: 'cg', src: 'cg_ch1_hoesik_soju.jpg' },
   { type: 'say', speaker: '朴在成', text: '（三杯燒酒下肚）姜旻赫！來，給부장倒一杯！' },
   { type: 'say', speaker: '旻赫', text: '（雙手倒酒）부장님, 한 잔 드세요.' },
   { type: 'say', speaker: '朴在成', text: '（一口乾）好！你也喝！' },
@@ -349,6 +350,7 @@ const CHAPTER1 = [
   { type: 'bg', src: 'office_day.png' },
   { type: 'narrate', text: '但朴在成的下一刀——沒有砍向旻赫。' },
   { type: 'narrate', text: '他砍向了智媛。' },
+  { type: 'cg', src: 'cg_ch1_park_throws_mail.jpg' },
   { type: 'say', speaker: '朴在成', text: '（站在智媛座位前，把一份印出的郵件甩到桌上）金智媛。你的客戶提案——被退回了。' },
   { type: 'say', speaker: '金智媛', text: '（愣）什麼？我昨天才發——' },
   { type: 'say', speaker: '朴在成', text: '客戶說格式不對、數據有誤。你看看你寫的什麼東西。' },
@@ -377,6 +379,7 @@ const CHAPTER1 = [
   { type: 'say', speaker: '金智媛', text: '（聲音在抖）부장님，那個客戶是您臨時調——' },
   { type: 'say', speaker: '朴在成', text: '你在找藉口？' },
   { type: 'narrate', text: '門被推開了。' },
+  { type: 'cg', src: 'cg_ch1_door_enter_v3.jpg' },
   { type: 'shake' },
   { type: 'say', speaker: '旻赫', text: '朴部長。' },
   { type: 'narrate', text: '辦公室安靜了。所有人轉頭看。' },
@@ -385,6 +388,7 @@ const CHAPTER1 = [
   { type: 'say', speaker: '旻赫', text: '發件人是張代理。但張代理上週出差，根本不在辦公室。那封退回郵件的發件時間……有問題。' },
   { type: 'narrate', text: '朴在成的臉色變了。' },
   { type: 'say', speaker: '旻赫', text: '（語氣平靜）而且智媛交出去的版本跟被退回的版本——不是同一個檔案。有人改過。' },
+  { type: 'cg', src: 'cg_ch1_faceoff_v2.jpg' },
   { type: 'say', speaker: '朴在成', text: '（拍桌）你在指控誰？！你一個試用期的——' },
   { type: 'say', speaker: '旻赫', text: '沒有指控任何人。我只是覺得……可能有誤會。建議朴部長確認一下。' },
   { type: 'narrate', text: '整層樓都在看。朴在成的臉從紅變白，再從白變紅。' },
@@ -409,6 +413,7 @@ const CHAPTER1 = [
   { type: 'bg', src: 'office_day.png' },
   { type: 'narrate', text: '朴在成動了。比旻赫預期的更快、更狠。' },
   { type: 'narrate', text: '第二天。旻赫的信箱裡出現了一封 HR 的約談通知。' },
+  { type: 'cg', src: 'cg_ch1_hr_interview.jpg' },
   { type: 'say', speaker: 'HR金部長', text: '姜旻赫先生。朴部長提交了一份報告——指出你入職以來多次違反部門流程、未經批准擅自修改文件、對上級態度不敬。' },
   { type: 'say', speaker: 'HR金部長', text: '考慮到你目前還在試用期……公司正在評估是否延長或終止你的合約。' },
   { type: 'say', speaker: '旻赫', text: '……我明白了。' },
@@ -424,6 +429,7 @@ const CHAPTER1 = [
   { type: 'narrate', text: '智媛。' },
   { type: 'narrate', text: '她什麼都沒說。拆開自己的飯糰，低頭吃。好像只是剛好來這裡吃午餐一樣。' },
   { type: 'narrate', text: '杯套上寫了字。很醜但很用力的字：\n「야 힘내.（加油。）」' },
+  { type: 'cg', src: 'cg_ch1_coffee_ganbare_v2.jpg' },
   { type: 'narrate', text: '旻赫看著那行字。沒說話。拿起咖啡，喝了一口。' },
   { type: 'narrate', text: '苦的。跟第一天那杯一樣。' },
   { type: 'narrate', text: '兩個人就這樣安靜吃完了午餐。什麼都沒說。' },
@@ -447,6 +453,7 @@ const CHAPTER1 = [
   { label: "ch1_legal" },
   { type: 'narrate', text: '三天後。旻赫什麼都沒做。沒有找吳常務、沒有寫信、沒有任何動作。' },
   { type: 'narrate', text: '他不需要做任何事。因為信已經寄出了。' },
+  { type: 'cg', src: 'cg_ch1_legal_arrives.jpg' },
   { type: 'narrate', text: '週一早上。經營企劃部來了兩個沒見過的人。西裝筆挺，公事包。他們走進吳常務辦公室，門關了一個小時。' },
   { type: 'narrate', text: '消息很快傳開了——集團法務部的人來了。' },
   { type: 'narrate', text: '智媛轉頭看了旻赫一眼。旻赫在看手機。表情沒有任何變化。' },
@@ -456,7 +463,7 @@ const CHAPTER1 = [
   // Scene 11：終局——會議室處刑
   // ═══════════════════════════════════════
   { label: "ch1_boss" },
-  { type: 'cg_hide' },
+  { type: 'cg', src: 'cg_ch1_01_night_hunter.jpg' },
   { type: 'narrate', text: '會議室。但這次不一樣。' },
   { type: 'narrate', text: '吳常務坐在主位。旁邊不只 HR 金部長——還有集團法務部的兩個人。桌上放著一疊很厚的文件。' },
   { type: 'narrate', text: '朴在成走進來。看到這陣仗——然後看到角落裡坐著的旻赫。' },
@@ -522,6 +529,7 @@ const CHAPTER1 = [
 
   // 走廊
   { type: 'cg_hide' },
+  { type: 'cg', src: 'cg_ch1_06_hallway.jpg' },
   { type: 'narrate', text: '旻赫站在走廊窗邊，看著朴在成的背影消失在旋轉門後面。' },
   { type: 'narrate', text: '身後傳來腳步聲。很快的腳步聲。' },
   { type: 'say', speaker: '金智媛', text: '（跑過來，喘著氣）法務部的人跟我說了——我的試用期評鑑會重新審核。朴在成寫的那些……全部不算。' },
