@@ -585,10 +585,21 @@ function confirmCard(cardId) {
     if (el.arrogancefill) el.arrogancefill.style.width = S.arrogance + '%';
   }
   
+  // === Wrong card → fail screen ===
+  if (result && result.rating === 'wrong') {
+    screenFlash('#ff000033', 300);
+    const failMsg = currentPlay.failText || '你選錯了牌……這一步棋走錯，復仇計畫功虧一簣。';
+    const savedPlay = currentPlay;
+    const savedStep = S.step;
+    // Show fail dialogue then choices
+    showMsg('【懷錶】', '[[' + failMsg + ']]');
+    S._pendingFail = { play: savedPlay, step: savedStep };
+    return;
+  }
+  
   // Flash based on result
   if (result) {
     if (result.rating === 'best') screenFlash('#c9a94e44', 500);
-    else if (result.rating === 'wrong') screenFlash('#ff000033', 300);
   }
   
   // Play branch
@@ -601,6 +612,41 @@ function confirmCard(cardId) {
   } else {
     next();
   }
+}
+
+// === Fail retry: show after fail message click ===
+function showFailRetry() {
+  if (!S._pendingFail) return;
+  const choices = el.choices;
+  if (!choices) return;
+  if (el.dialogue) el.dialogue.className = '';
+  choices.innerHTML = '';
+  choices.style.display = 'flex';
+  
+  const btnRetry = document.createElement('button');
+  btnRetry.textContent = '📺 看廣告，再給我一次機會';
+  btnRetry.onclick = () => {
+    choices.style.display = 'none';
+    // Simulate ad (placeholder — just re-show card play)
+    const fail = S._pendingFail;
+    S._pendingFail = null;
+    S.step = fail.step;
+    currentPlay = null;
+    run(); // re-run the card_play step
+  };
+  
+  const btnFail = document.createElement('button');
+  btnFail.textContent = '💀 認命，從頭再來';
+  btnFail.onclick = () => {
+    choices.style.display = 'none';
+    S._pendingFail = null;
+    // Reset to chapter start
+    if (typeof startChapter1 === 'function') { startChapter1(); }
+    else { S.step = 0; script = typeof CHAPTER1 !== 'undefined' ? CHAPTER1 : script; run(); }
+  };
+  
+  choices.appendChild(btnRetry);
+  choices.appendChild(btnFail);
 }
 
 // ===== BIG TITLE =====
@@ -711,13 +757,21 @@ document.addEventListener('click', e => {
   if (e.target.closest('#card-preview')) return;
   if (e.target.closest('#card-acquire-overlay')) return;
   if (S.typing) skipType();
-  else if (S.waitClick) { S.waitClick = false; next(); }
+  else if (S.waitClick) {
+    S.waitClick = false;
+    if (S._pendingFail) { showFailRetry(); }
+    else { next(); }
+  }
 });
 document.addEventListener('keydown', e => {
   if (e.key===' '||e.key==='Enter') {
     e.preventDefault();
     if (S.typing) skipType();
-    else if (S.waitClick) { S.waitClick = false; next(); }
+    else if (S.waitClick) {
+      S.waitClick = false;
+      if (S._pendingFail) { showFailRetry(); }
+      else { next(); }
+    }
   }
 });
 

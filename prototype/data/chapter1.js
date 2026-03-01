@@ -482,23 +482,24 @@ const CHAPTER1 = [
   { type: 'cg', src: 'cg_ch1_03_meeting.jpg' },
   { type: 'narrate', text: '朴在成坐下。他注意到旻赫的表情——不是微笑。是無表情。比微笑更可怕。' },
 
-  // BOSS 出牌（五回合攻防序列）
-  { type: 'card_play', id: 'boss',
-    prompt: '[[時候到了。五張牌。第一張——你選。]]',
+  // ── 第一回合選牌：已讀（搶功勞的鐵證）──
+  { type: 'card_play', id: 'boss_r1',
+    prompt: '[[第一擊。搶功勞的鐵證就在手上——用哪張牌揭開？]]',
+    failText: '時機錯了……朴在成察覺到你的意圖，反咬一口。復仇計畫功虧一簣。',
     cards: ['fool', 'gluttony', 'judgement', 'seen', 'cain'],
     hints: {
-      fool:     '讓他自己說。謊話說得越多，摔得越重。',
-      gluttony: '直搗黃龍——四千七百萬。他的胃，今天該清空了。',
-      judgement: '讓證據先說話。冷靜是最鋒利的刀。',
-      seen:     '從搶功勞開始——讓所有人先看清他的臉。',
-      cain:     '先揭欺壓——讓受害者替你說話。'
+      seen:     '郵件回執、文件屬性——他九分鐘就偷走了你的功勞。已讀不回？不，已讀全收。',
+      fool:     '裝傻？現在不是演戲的時候。',
+      gluttony: '四千七百萬是後面的事。先從小的開始。',
+      judgement: '證據是要出的——但順序不對。',
+      cain:     '同事的事可以等一下。先處理你自己的。'
     },
     results: {
-      fool:     { rating: 'best', arrogance: 0, branch: 'boss_fool' },
-      gluttony: { rating: 'best', arrogance: 0, branch: 'boss_gluttony' },
-      judgement:{ rating: 'best', arrogance: 0, branch: 'boss_judgement' },
-      seen:     { rating: 'best', arrogance: 0, branch: 'boss_seen' },
-      cain:     { rating: 'best', arrogance: 0, branch: 'boss_cain' }
+      seen:     { rating: 'best', arrogance: 0 },
+      fool:     { rating: 'wrong', arrogance: 10 },
+      gluttony: { rating: 'wrong', arrogance: 10 },
+      judgement:{ rating: 'wrong', arrogance: 10 },
+      cain:     { rating: 'wrong', arrogance: 10 }
     }
   },
 
@@ -516,6 +517,27 @@ const CHAPTER1 = [
   { type: 'say', speaker: '旻赫', text: '績效系統的修改紀錄可以調。誰改的，什麼時候改的，一查就知道。' },
   { type: 'narrate', text: '朴在成沒有接話。第一次。' },
   { type: 'say', speaker: '【懷錶】', text: '[[已讀。他九分鐘就把你的心血變成自己的功勞。現在所有人都知道了。]]' },
+
+  // ── 第二回合選牌：該隱的印記 ──
+  { type: 'card_play', id: 'boss_r2',
+    prompt: '[[第二擊。不只是你的事——其他人也被他傷害過。用哪張牌？]]',
+    failText: '方向錯了……你打出了不相關的牌，朴在成趁機反駁。攻勢中斷。',
+    cards: ['fool', 'gluttony', 'judgement', 'seen', 'cain'],
+    hints: {
+      cain:     '該隱殺了兄弟，朴在成壓了所有人。讓受害者替你說話。',
+      fool:     '裝傻沒用——現在需要的是證人。',
+      gluttony: '公款的事還不急。先讓他知道不只你一個人。',
+      judgement: '證據很重要，但現在需要的是人證。',
+      seen:     '已讀的事說過了。下一步。'
+    },
+    results: {
+      cain:     { rating: 'best', arrogance: 0 },
+      fool:     { rating: 'wrong', arrogance: 10 },
+      gluttony: { rating: 'wrong', arrogance: 10 },
+      judgement:{ rating: 'wrong', arrogance: 10 },
+      seen:     { rating: 'wrong', arrogance: 10 }
+    }
+  },
 
   // ── 第二回合：該隱的印記（被欺壓的同事——逐一平反）──
   { type: 'cg', src: 'cg_ch1_colleagues_speak.jpg' },
@@ -539,6 +561,27 @@ const CHAPTER1 = [
   { type: 'say', speaker: '旻赫', text: '一個人被欺負，可能是那個人有問題。三個人、四個人都被欺負——問題在誰，朴部長自己清楚。' },
   { type: 'narrate', text: '會議室沉默了。朴在成看了一圈——沒有一個人看他。' },
   { type: 'say', speaker: '【懷錶】', text: '[[該隱的印記。他在每一個人身上都留了標記——搶功勞、偷業績、造假打壓。他以為沒人會說。但你讓他們說了。]]' },
+
+  // ── 第三回合選牌：暴食 ──
+  { type: 'card_play', id: 'boss_r3',
+    prompt: '[[第三擊。搶功勞、欺壓同事都揭了。現在——該掏他的口袋了。]]',
+    failText: '節奏亂了……你跳過了最關鍵的財務證據，朴在成喘過一口氣。',
+    cards: ['fool', 'gluttony', 'judgement', 'seen', 'cain'],
+    hints: {
+      gluttony: '四千七百萬假帳。高爾夫球場。童裝店。他的胃——該清空了。',
+      fool:     '裝傻？面對貪污不能裝傻。',
+      judgement: '審判是最後一擊。現在先讓他的錢包說話。',
+      seen:     '已讀的牌用過了。',
+      cain:     '同事的事說完了。換錢的事。'
+    },
+    results: {
+      gluttony: { rating: 'best', arrogance: 0 },
+      fool:     { rating: 'wrong', arrogance: 10 },
+      judgement:{ rating: 'wrong', arrogance: 10 },
+      seen:     { rating: 'wrong', arrogance: 10 },
+      cain:     { rating: 'wrong', arrogance: 10 }
+    }
+  },
 
   // ── 第三回合：暴食（公款私用——漣漪變成浪）──
   { type: 'say', speaker: '旻赫', text: '（聲音微微壓低）第三件。這一件……不是小事了。' },
@@ -564,6 +607,27 @@ const CHAPTER1 = [
   { type: 'say', speaker: '朴在成', text: '吳常務！您也知道——業務上有些灰色地帶是必要的！哪個部長不是這樣？！這是行規！您——您不也——' },
   { type: 'say', speaker: '吳常務', text: '（冷冷地）朴部長。我建議你現在閉嘴。' },
 
+  // ── 第四回合選牌：審判 ──
+  { type: 'card_play', id: 'boss_r4',
+    prompt: '[[第四擊。搶功勞、欺壓、貪污都攤開了。最後的鐵證——收回扣。一擊斃命。]]',
+    failText: '最致命的一擊打偏了……朴在成看到了翻盤的機會。',
+    cards: ['fool', 'gluttony', 'judgement', 'seen', 'cain'],
+    hints: {
+      judgement: '停車場密會、外包抬價 30%、收回扣——審判之錘，落下。',
+      fool:     '愚者是收場用的。現在要的是致命一擊。',
+      gluttony: '公款的事說完了。這次更大——是犯罪。',
+      seen:     '已讀解決不了回扣問題。',
+      cain:     '不是欺壓了——是犯罪。用對的牌。'
+    },
+    results: {
+      judgement:{ rating: 'best', arrogance: 0 },
+      fool:     { rating: 'wrong', arrogance: 10 },
+      gluttony: { rating: 'wrong', arrogance: 10 },
+      seen:     { rating: 'wrong', arrogance: 10 },
+      cain:     { rating: 'wrong', arrogance: 10 }
+    }
+  },
+
   // ── 第四回合：審判（鐵證——浪變成海嘯）──
   { type: 'narrate', text: '朴在成癱坐回椅子上。他以為「行規」能護住他。但吳常務的臉色告訴他：不能。' },
   { type: 'say', speaker: '旻赫', text: '最後一件。' },
@@ -575,6 +639,27 @@ const CHAPTER1 = [
   { type: 'say', speaker: '朴在成', text: '（聲音沙啞，幾乎聽不到）……너……대체 뭐야.（你……到底是什麼。）你才來一個月……一個月……' },
   { type: 'flash', color: '#ffffff', duration: 300 },
   { type: 'shake' },
+
+  // ── 第五回合選牌：愚者 ──
+  { type: 'card_play', id: 'boss_r5',
+    prompt: '[[最後一張牌。他已經完了。但你要怎麼收場？——用最不像武器的那張。]]',
+    failText: '收場方式錯了……你贏了戰鬥，卻輸了格局。',
+    cards: ['fool', 'gluttony', 'judgement', 'seen', 'cain'],
+    hints: {
+      fool:     '愚者。看起來最蠢的選擇——提他女兒的名字。但這才是真正的收場。',
+      gluttony: '貪污的事說完了。收場不靠錢。',
+      judgement: '審判結束了。最後要的不是證據——是人性。',
+      seen:     '已讀是開場。收場需要別的東西。',
+      cain:     '印記都刻完了。最後一刀——要刻在心上。'
+    },
+    results: {
+      fool:     { rating: 'best', arrogance: 0 },
+      gluttony: { rating: 'wrong', arrogance: 10 },
+      judgement:{ rating: 'wrong', arrogance: 10 },
+      seen:     { rating: 'wrong', arrogance: 10 },
+      cain:     { rating: 'wrong', arrogance: 10 }
+    }
+  },
 
   // ── 第五回合：愚者（收場——不是打臉，是人性）──
   { type: 'cg', src: 'cg_ch1_sujin_final.jpg' },
