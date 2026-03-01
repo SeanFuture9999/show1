@@ -316,6 +316,7 @@ const CHAPTER1 = [
   { label: "ch1_revenge" },
   { type: 'narrate', text: '朴在成記仇了。會食丟了面子，他要找回來。' },
   { type: 'say', speaker: '朴在成', text: '（直奔旻赫座位）姜旻赫。你昨天報的數據有問題。' },
+  { type: 'cg', src: 'cg_ch1_redpen_report.jpg' },
   { type: 'narrate', text: '他把一份報告扔到桌上。紅筆圈了三處——全是朴在成自己改錯的地方。甩鍋。' },
   { type: 'arrogance', delta: 15, reason: '甩鍋' },
   { type: 'say', speaker: '朴在成', text: '我看你這個試用期啊，懸了。' },
