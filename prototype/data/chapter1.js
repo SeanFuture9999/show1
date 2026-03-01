@@ -701,6 +701,7 @@ const CH1_BRANCHES = {
     // 智媛名場面
     { type: 'narrate', text: '朴在成得寸進尺——又倒了第二杯。' },
     { type: 'say', speaker: '朴在成', text: '再來一杯！年輕人要能喝——' },
+    { type: 'cg', src: 'cg_ch1_02_jiwon.jpg' },
     { type: 'say', speaker: '金智媛', text: '（「啪」放下筷子，站起來）부장님！사람이 술 못 마신다는데 왜 자꾸 강요하십니까!（人家說不能喝你為啥一直逼！）' },
     { type: 'shake' },
     { type: 'narrate', text: '包廂徹底安靜。' },
