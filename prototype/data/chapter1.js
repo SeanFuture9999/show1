@@ -385,7 +385,7 @@ const CHAPTER1 = [
   { type: 'say', speaker: '金智媛', text: '（聲音在抖）부장님，那個客戶是您臨時調——' },
   { type: 'say', speaker: '朴在成', text: '你在找藉口？' },
   { type: 'narrate', text: '門被推開了。' },
-  { type: 'cg', src: 'cg_ch1_door_enter_v3.jpg' },
+  { type: 'cg', src: 'cg_ch1_door_enter_v3.jpg', pan: { start: 'left center', to: 'right center', duration: 3000 } },
   { type: 'shake' },
   { type: 'say', speaker: '旻赫', text: '朴部長。' },
   { type: 'narrate', text: '辦公室安靜了。所有人轉頭看。' },
