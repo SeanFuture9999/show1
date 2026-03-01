@@ -684,9 +684,9 @@ const CHAPTER1 = [
   { type: 'narrate', text: '他抱起紙箱。走過自己坐了十五年的走道。每一步都很慢。像是在跟什麼道別。' },
   { type: 'narrate', text: '旋轉門在他身後合上。辦公室恢復了安靜——但那種安靜，跟以前不一樣了。' },
 
-  // 走廊
+  // 走廊（繼續用紙箱圖）
   { type: 'cg_hide' },
-  { type: 'cg', src: 'cg_ch1_06_hallway.jpg' },
+  { type: 'cg', src: 'cg_ch1_04_cardboard.jpg' },
   { type: 'narrate', text: '旻赫站在走廊窗邊，看著朴在成的背影消失在旋轉門後面。' },
   { type: 'narrate', text: '身後傳來腳步聲。很快的腳步聲。' },
   { type: 'say', speaker: '金智媛', text: '（跑過來，喘著氣）法務部的人跟我說了——我的試用期評鑑會重新審核。朴在成寫的那些……全部不算。' },
