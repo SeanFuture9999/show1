@@ -340,7 +340,7 @@ const CHAPTER1 = [
   { label: "ch1_parkscar" },
   { type: 'bg', src: 'breakroom.jpg' },
   { type: 'narrate', text: '午休。旻赫路過茶水間，聽到朴在成在打電話。' },
-  { type: 'cg', src: 'char_new_01_park.jpg', portrait: true },
+  { type: 'cg', src: 'cg_ch1_hallway_phone_v1.jpg' },
   { type: 'say', speaker: '朴在成', text: '（聲音壓得很低）수진아……응, 아빠야.（秀珍啊……嗯，是爸爸。）' },
   { type: 'say', speaker: '朴在成', text: '학원비 보냈어. 이번 달은 좀 늦어서 미안.（補習班費轉了。晚了，抱歉。）' },
   { type: 'say', speaker: '朴在成', text: '……수능 잘 볼 거야. 아빠가 믿어.（高考一定會考好的。爸爸相信你。）' },
