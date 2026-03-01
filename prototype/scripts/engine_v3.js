@@ -624,23 +624,25 @@ function showFailRetry() {
   choices.style.display = 'flex';
   
   const btnRetry = document.createElement('button');
-  btnRetry.textContent = '📺 看廣告，再給我一次機會';
+  btnRetry.className = 'choice-btn';
+  btnRetry.innerHTML = '📺 看廣告，再給我一次機會';
   btnRetry.onclick = () => {
     choices.style.display = 'none';
-    // Simulate ad (placeholder — just re-show card play)
     const fail = S._pendingFail;
     S._pendingFail = null;
     S.step = fail.step;
     currentPlay = null;
-    run(); // re-run the card_play step
+    run();
   };
   
   const btnFail = document.createElement('button');
-  btnFail.textContent = '💀 認命，從頭再來';
+  btnFail.className = 'choice-btn';
+  btnFail.style.borderColor = '#666';
+  btnFail.style.color = '#999';
+  btnFail.innerHTML = '💀 認命，從頭再來';
   btnFail.onclick = () => {
     choices.style.display = 'none';
     S._pendingFail = null;
-    // Reset to chapter start
     if (typeof startChapter1 === 'function') { startChapter1(); }
     else { S.step = 0; script = typeof CHAPTER1 !== 'undefined' ? CHAPTER1 : script; run(); }
   };
