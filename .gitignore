@@ -1,3 +1,8 @@
 node_modules/
 .DS_Store
 *.log
+
+# API keys - do not push
+prototype/gen_missing.py
+prototype/generate_all.py
+prototype/assets/cg/cg_ch1_ending_walk_old.jpg
