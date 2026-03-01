@@ -442,13 +442,13 @@ const CHAPTER1 = [
 
   // 旻赫的佈局揭曉（內心戲）
   { type: 'cg_hide' },
-  { type: 'bg', src: 'office_night.png' },
+  { type: 'bg', src: 'office_empty_v2.jpg' },
   { type: 'say', speaker: '旻赫', text: '（……朴在成。你比前世更快動手了。因為我刺了你一刀。）' },
   { type: 'say', speaker: '旻赫', text: '（但你不知道——我早就知道你會這樣做。因為前世你做過一次了。）' },
   { type: 'say', speaker: '旻赫', text: '（而我從第一天開始，就準備了一條路——不經過吳常務。）' },
   { type: 'say', speaker: '旻赫', text: '（因為吳常務不會管。他知道朴在成有問題，但管了等於承認自己的部門有問題。前世他就是這樣——睜一隻眼閉一隻眼。）' },
   { type: 'say', speaker: '旻赫', text: '（所以這一次，我的信——寄給了集團監察室。）' },
-  { type: 'bg', src: 'parking_garage.jpg' },
+  { type: 'bg', src: 'parking_garage_v2.jpg' },
   { type: 'say', speaker: '旻赫', text: '（搶功勞的追蹤修訂。法人信用卡十四筆假帳。還有朴在成跟韓星科技業務部長停車場密會的照片。）' },
   { type: 'say', speaker: '旻赫', text: '（寄出的時間——是我被 HR 約談的第二天。）' },
   { type: 'say', speaker: '旻赫', text: '（也就是說：是朴在成親手把我推到了絕路……而我在絕路上按下了發送鍵。）' },
@@ -503,7 +503,7 @@ const CHAPTER1 = [
   },
 
   // ── 第一回合：已讀（搶功勞的鐵證）──
-  { type: 'cg', src: 'cg_ch1_email_evidence.jpg' },
+  { type: 'cg', src: 'cg_ch1_03_meeting.jpg' },
   { type: 'say', speaker: '旻赫', text: '（站起來，語氣平靜）吳常務，我先從一件事說起。' },
   { type: 'say', speaker: '旻赫', text: '上個月的 Q2 市場分析報告——朴部長在週會上說是他帶領團隊完成的。' },
   { type: 'say', speaker: '旻赫', text: '但公司郵件系統有完整紀錄。4/1 晚上 11:47，我把報告完成稿寄給朴部長審核。朴部長 4/2 上午 9:03 已讀。' },
