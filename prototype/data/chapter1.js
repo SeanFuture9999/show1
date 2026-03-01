@@ -501,6 +501,7 @@ const CHAPTER1 = [
   },
 
   // ── 第一回合：已讀（搶功勞的鐵證）──
+  { type: 'cg', src: 'cg_ch1_email_evidence.jpg' },
   { type: 'say', speaker: '旻赫', text: '（站起來，語氣平靜）吳常務，我先從一件事說起。' },
   { type: 'say', speaker: '旻赫', text: '上個月的 Q2 市場分析報告——朴部長在週會上說是他帶領團隊完成的。' },
   { type: 'say', speaker: '旻赫', text: '但公司郵件系統有完整紀錄。4/1 晚上 11:47，我把報告完成稿寄給朴部長審核。朴部長 4/2 上午 9:03 已讀。' },
@@ -515,6 +516,7 @@ const CHAPTER1 = [
   { type: 'say', speaker: '【懷錶】', text: '[[已讀。他九分鐘就把你的心血變成自己的功勞。現在所有人都知道了。]]' },
 
   // ── 第二回合：該隱的印記（被欺壓的同事——逐一平反）──
+  { type: 'cg', src: 'cg_ch1_colleagues_speak.jpg' },
   { type: 'say', speaker: '旻赫', text: '第二件。不是我的事——是其他人的。' },
   { type: 'narrate', text: '朴在成的表情變了。他以為這場只是旻赫跟他的私人恩怨。' },
   { type: 'say', speaker: '旻赫', text: '李代理。去年十一月。朴部長指派他負責 SK 海力士的專案，口頭承諾做完升職。李代理連續加班三週，瘦了五公斤。' },
@@ -542,6 +544,7 @@ const CHAPTER1 = [
   { type: 'narrate', text: '朴在成的臉色第一次真正變了。' },
   { type: 'say', speaker: '朴在成', text: '（快速反擊）那些是外部業務餐敘——有些小餐廳沒有登記很正常！你一個新人懂什麼業務應酬！' },
   { type: 'say', speaker: '旻赫', text: '好。那我們看具體的。4/12，報帳項目：「客戶餐敘，二人工作午餐」。金額：三十八萬韓元。' },
+  { type: 'cg', src: 'cg_ch1_golf_receipt.jpg' },
   { type: 'say', speaker: '旻赫', text: '但那天是週六。而且——朴部長那天在江南高爾夫球場。這是停車場的照片。法人信用卡不是用來請客戶吃飯的——是用來付球場會員費的。' },
   { type: 'narrate', text: '會議室安靜了。' },
   { type: 'say', speaker: '朴在成', text: '（聲音開始抖）那……那是因為客戶喜歡打球！業務交際——' },
@@ -551,6 +554,7 @@ const CHAPTER1 = [
   { type: 'narrate', text: '朴在成的手指開始發白了。' },
   { type: 'say', speaker: '旻赫', text: '（沒有提高音量——反而更輕了）朴部長。用公司的錢買自己的東西——這不是管理風格的問題了。' },
   { type: 'narrate', text: '朴在成猛地站起來。椅子往後倒。' },
+  { type: 'cg', src: 'cg_ch1_park_collapse.jpg' },
   { type: 'shake' },
   { type: 'say', speaker: '朴在成', text: '내가 이 회사에 15 년을 바쳤어!! 15 년!!（我奉獻了十五年！！十五年！！）' },
   { type: 'say', speaker: '朴在成', text: '你知道我每天幾點下班嗎！你知道我犧牲了多少家庭時間嗎！你一個來了一個月的新人——你憑什麼——！' },
@@ -571,6 +575,7 @@ const CHAPTER1 = [
   { type: 'shake' },
 
   // ── 第五回合：愚者（收場——不是打臉，是人性）──
+  { type: 'cg', src: 'cg_ch1_sujin_final.jpg' },
   { type: 'narrate', text: '旻赫站起來。走到門口。停了一下。沒有回頭。' },
   { type: 'say', speaker: '旻赫', text: '부장님.' },
   { type: 'narrate', text: '朴在成抬頭。眼眶紅了。不是演的。' },
