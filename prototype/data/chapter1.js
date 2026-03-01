@@ -419,7 +419,7 @@ const CHAPTER1 = [
   { type: 'bg', src: 'office_day.png' },
   { type: 'narrate', text: '朴在成動了。比旻赫預期的更快、更狠。' },
   { type: 'narrate', text: '第二天。旻赫的信箱裡出現了一封 HR 的約談通知。' },
-  { type: 'cg', src: 'cg_ch1_hr_interview.jpg' },
+  { type: 'cg', src: 'cg_ch1_hr_interview.jpg', pan: { start: 'left center', to: 'right center', duration: 3000 } },
   { type: 'say', speaker: 'HR金部長', text: '姜旻赫先生。朴部長提交了一份報告——指出你入職以來多次違反部門流程、未經批准擅自修改文件、對上級態度不敬。' },
   { type: 'say', speaker: 'HR金部長', text: '考慮到你目前還在試用期……公司正在評估是否延長或終止你的合約。' },
   { type: 'say', speaker: '旻赫', text: '……我明白了。' },
