@@ -441,6 +441,7 @@ const CHAPTER1 = [
   { type: 'narrate', text: '兩個人就這樣安靜吃完了午餐。什麼都沒說。' },
 
   // 旻赫的佈局揭曉（內心戲）
+  { type: 'cg', src: 'cg_ch1_01_night_hunter.jpg' },
   { type: 'say', speaker: '旻赫', text: '（……朴在成。你比前世更快動手了。因為我刺了你一刀。）' },
   { type: 'say', speaker: '旻赫', text: '（但你不知道——我早就知道你會這樣做。因為前世你做過一次了。）' },
   { type: 'say', speaker: '旻赫', text: '（而我從第一天開始，就準備了一條路——不經過吳常務。）' },
@@ -469,7 +470,7 @@ const CHAPTER1 = [
   // Scene 11：終局——會議室處刑
   // ═══════════════════════════════════════
   { label: "ch1_boss" },
-  { type: 'cg', src: 'cg_ch1_01_night_hunter.jpg' },
+  { type: 'cg', src: 'cg_ch1_tribunal.jpg' },
   { type: 'narrate', text: '會議室。但這次不一樣。' },
   { type: 'narrate', text: '吳常務坐在主位。旁邊不只 HR 金部長——還有集團法務部的兩個人。桌上放著一疊很厚的文件。' },
   { type: 'narrate', text: '朴在成走進來。看到這陣仗——然後看到角落裡坐著的旻赫。' },
