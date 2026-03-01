@@ -290,7 +290,6 @@ const CHAPTER1 = [
   { type: 'shake' },
   { type: 'say', speaker: '朴在成', text: '야, 너 몇 년차야?（喂，你幾年資？）第一個月就敢拒絕부장的酒？我在盛元十五年！從來沒見過！' },
   { type: 'narrate', text: '包廂沒人說話。有人尷尬低頭夾肉。有人假裝上廁所。只有金智媛的筷子在桌面上敲得噹噹響。' },
-  { type: 'cg', src: 'cg_ch1_02_jiwon.jpg' },
   { type: 'arrogance', delta: 20, reason: '會食逼酒' },
 
   // 出牌點 #3
