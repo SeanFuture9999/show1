@@ -435,7 +435,7 @@ const CHAPTER1 = [
   { type: 'narrate', text: '智媛。' },
   { type: 'narrate', text: '她什麼都沒說。拆開自己的飯糰，低頭吃。好像只是剛好來這裡吃午餐一樣。' },
   { type: 'narrate', text: '杯套上寫了字。很醜但很用力的字：\n「야 힘내.（加油。）」' },
-  { type: 'cg', src: 'cg_ch1_coffee_ganbare_v2.jpg' },
+  { type: 'cg', src: 'cg_ch1_coffee_ganbare_v2.jpg', pan: { start: 'right center', to: 'left center', duration: 3000 } },
   { type: 'narrate', text: '旻赫看著那行字。沒說話。拿起咖啡，喝了一口。' },
   { type: 'narrate', text: '苦的。跟第一天那杯一樣。' },
   { type: 'narrate', text: '兩個人就這樣安靜吃完了午餐。什麼都沒說。' },
