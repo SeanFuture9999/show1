@@ -680,6 +680,9 @@ const CHAPTER1 = [
   { type: 'cg', src: 'cg_ch1_04_cardboard.jpg' },
   { type: 'narrate', text: '朴在成走出會議室。透過玻璃，所有人看到他在自己座位前站了很久。桌上有女兒秀珍的照片。他把照片拿起來，放進口袋。然後開始收東西。' },
   { type: 'narrate', text: '十五年。最後裝進一個紙箱。' },
+  { type: 'narrate', text: '同事們隔著玻璃看著。有人捂住嘴。有人低下頭。沒有人說話。' },
+  { type: 'narrate', text: '他抱起紙箱。走過自己坐了十五年的走道。每一步都很慢。像是在跟什麼道別。' },
+  { type: 'narrate', text: '旋轉門在他身後合上。辦公室恢復了安靜——但那種安靜，跟以前不一樣了。' },
 
   // 走廊
   { type: 'cg_hide' },
