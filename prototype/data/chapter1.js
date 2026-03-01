@@ -684,9 +684,9 @@ const CHAPTER1 = [
   { type: 'narrate', text: '他抱起紙箱。走過自己坐了十五年的走道。每一步都很慢。像是在跟什麼道別。' },
   { type: 'narrate', text: '旋轉門在他身後合上。辦公室恢復了安靜——但那種安靜，跟以前不一樣了。' },
 
-  // 走廊（繼續用紙箱圖）
+  // 走廊（結局CG）
   { type: 'cg_hide' },
-  { type: 'cg', src: 'cg_ch1_04_cardboard.jpg' },
+  { type: 'cg', src: 'cg_ch1_ending_walk.jpg' },
   { type: 'narrate', text: '旻赫站在走廊窗邊，看著朴在成的背影消失在旋轉門後面。' },
   { type: 'narrate', text: '身後傳來腳步聲。很快的腳步聲。' },
   { type: 'say', speaker: '金智媛', text: '（跑過來，喘著氣）法務部的人跟我說了——我的試用期評鑑會重新審核。朴在成寫的那些……全部不算。' },
@@ -710,11 +710,8 @@ const CHAPTER1 = [
   { type: 'effect', name: 'fadeout' },
   { type: 'wait', ms: 2000 },
 
-  // 下集預告
-  { type: 'big_title', text: '第二章', sub: '秘書的眼淚' },
-  { type: 'narrate', text: '「大家好！我是新來的行政秘書崔恩智！」' },
-  { type: 'narrate', text: '笑容甜美。手在發抖。手機裡有兩個她最怕收到消息的人——一個是徐俊宇。一個是爸爸。' },
-  { type: 'chapter_end', next: '第二章：秘書的眼淚', showAd: true },
+  // 結尾
+  { type: 'chapter_end', next: '敬請期待', showAd: true },
 
 ];
 

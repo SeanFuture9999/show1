@@ -284,9 +284,9 @@ body { font-family:'Noto Sans TC','Noto Sans KR',sans-serif; -webkit-tap-highlig
 </style>
 </head>
 <body>
-<!-- Debug menu - remove before launch -->
-<button id="debug-btn" onclick="toggleDebug()">⚙</button>
-<div id="debug-menu">
+<!-- Debug menu - hidden for external viewing -->
+<button id="debug-btn" onclick="toggleDebug()" style="display:none">⚙</button>
+<div id="debug-menu" style="display:none !important">
   <button class="debug-item" onclick="debugJump(0)">▶ 序章：拖行天台</button>
   <button class="debug-item" onclick="debugJump('lookingup')">▶ 仰角（俊宇）</button>
   <button class="debug-item" onclick="debugJump('hand')">▶ 踩手指</button>

@@ -688,12 +688,12 @@ function chapterEnd(nx, showAd) {
       overlay.style.display = 'flex';
       overlay.innerHTML = `
         <div class="chapter-end-title">━━ ${S.chapter === 'prologue' ? '序章完' : '第一章完'} ━━</div>
-        <div class="chapter-end-next">下一章：${nx || '開發中...'}</div>
+        <div class="chapter-end-next">${S.chapter === 'prologue' ? '下一章：' + (nx || '開發中...') : '敬請期待'}</div>
         <button class="acquire-close" onclick="closeChapterEnd()">▶ 繼續</button>
       `;
     }
   } else {
-    showMsg('', `━━ 完 ━━\n\n下一章：${nx||'開發中...'}`);
+    showMsg('', `━━ 敬請期待 ━━`);
   }
 }
 
@@ -709,7 +709,7 @@ function closeChapterEnd() {
     S.step = 0;
     run();
   } else if (S.chapter === 'chapter1') {
-    showMsg('', '━━ 第二章：秘書的眼淚 ━━\n\n開發中...');
+    showMsg('', '━━ 敬請期待 ━━');
   } else {
     showMsg('', '━━ 開發中 ━━');
   }
